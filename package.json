@@ -6,6 +6,7 @@
     "start": "ng serve --open",
     "start:example1": "ng serve --project=example-combining --port=4201 --open",
     "start:example2": "ng serve --project=example-action-subtyping --port=4202 --open",
+    "start:example3": "ng serve --project=example-action-subtyping2 --port=4203 --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint"

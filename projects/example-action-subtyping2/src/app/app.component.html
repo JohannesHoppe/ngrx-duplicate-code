@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>
+    <img width="120" src="assets/angular.png" alt="Angular Logo" >
+    {{ title }}
+  </h1>
+
+  <div class="content row">
+
+    <div class="col-sm">
+      <app-load-button (btnClick)="loadItems('books')" [status]="booksStatus$ | async">
+        Load Books
+      </app-load-button>
+
+      <ul class="mt-4">
+        <li *ngFor="let book of books$ | async">{{ book.title }}</li>
+      </ul>
+
+      <app-show-error [error]="booksError$ | async"></app-show-error>
+    </div>
+
+    <!-- -- -->
+
+    <div class="col-sm">
+      <app-load-button (btnClick)="loadItems('authors')" [status]="authorsStatus$ | async">
+        Load Authors
+      </app-load-button>
+
+      <ul class="mt-4">
+        <li *ngFor="let author of authors$ | async">{{ author }}</li>
+      </ul>
+
+      <app-show-error [error]="authorsError$ | async"></app-show-error>
+    </div>
+
+    <!-- -- -->
+
+    <div class="col-sm">
+      <app-load-button (btnClick)="loadItems('thumbnails')" [status]="thumbnailsStatus$ | async">
+        Load Thumbnails
+      </app-load-button>
+
+      <div class="mt-4">
+        <img *ngFor="let thumbnail of thumbnails$ | async" [src]="thumbnail" width="100" class="mr-1 mb-1">
+      </div>
+
+      <app-show-error [error]="thumbnailsError$ | async"></app-show-error>
+    </div>
+
+  </div>
+</div>
