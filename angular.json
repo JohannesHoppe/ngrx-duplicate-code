@@ -180,7 +180,7 @@
               "projects/example-action-subtyping/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping/src/styles.css"
+              "projects/example-action-subtyping/src/styles.scss"
             ],
             "scripts": []
           }
@@ -220,7 +220,7 @@
               "projects/example-combining/src/assets"
             ],
             "styles": [
-              "projects/example-combining/src/styles.css"
+              "projects/example-combining/src/styles.scss"
             ],
             "scripts": []
           },
