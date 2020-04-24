@@ -44,65 +44,65 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(BookActions.loadBooks, state => ({
+  on(BookActions.loadBooks,
+     BookActions.loadAuthors,
+     BookActions.loadThumbnails, (state, { type }) => ({
     ...state,
-    booksStatus: Status.Submitting,
+    ...(type === BookActions.loadBooks.type      ? { booksStatus:      Status.Submitting } : {}),
+    ...(type === BookActions.loadAuthors.type    ? { authorsStatus:    Status.Submitting } : {}),
+    ...(type === BookActions.loadThumbnails.type ? { thumbnailsStatus: Status.Submitting } : {})
   })),
 
-  on(BookActions.loadBooksSuccess, (state, { data: books }) => ({
+  on(BookActions.loadBooksSuccess,
+     BookActions.loadAuthorsSuccess,
+     BookActions.loadThumbnailsSuccess, (state, { type, data }) => ({
     ...state,
-    books,
-    booksStatus: Status.Successful,
-    booksError: undefined
+
+    ...(type === BookActions.loadBooksSuccess.type ? {
+      books: data,
+      booksStatus: Status.Successful,
+      booksError: undefined
+    } : {}),
+
+    // still some kind of second duplication 🤨
+
+    ...(type === BookActions.loadAuthorsSuccess.type ? {
+      authors: data,
+      authorsStatus: Status.Successful,
+      authorsError: undefined
+    } : {}),
+
+      // still some kind of third duplication 😞
+
+    ...(type === BookActions.loadThumbnailsSuccess.type ? {
+      thumbnails: data,
+      thumbnailsStatus: Status.Successful,
+      thumbnailsError: undefined
+    } : {})
   })),
 
-  on(BookActions.loadBooksFailure, (state, { error: booksError }) => ({
+  on(BookActions.loadBooksFailure,
+     BookActions.loadAuthorsFailure,
+     BookActions.loadThumbnailsFailure, (state, { type, error }) => ({
     ...state,
-    books: [],
-    booksStatus: Status.Failure,
-    booksError
-  })),
 
-  // second duplication 🤨
+    ...(type === BookActions.loadBooksFailure.type ? {
+      books: [],
+      booksStatus: Status.Failure,
+      booksError: error
+    } : {}),
 
-  on(BookActions.loadAuthors, state => ({
-    ...state,
-    authorsStatus: Status.Submitting,
-  })),
+    ...(type === BookActions.loadAuthorsFailure.type ? {
+      authors: [],
+      authorsStatus: Status.Failure,
+      authorsError: error
+    } : {}),
 
-  on(BookActions.loadAuthorsSuccess, (state, { data: authors }) => ({
-    ...state,
-    authors,
-    authorsStatus: Status.Successful,
-    authorsError: undefined
-  })),
-
-  on(BookActions.loadAuthorsFailure, (state, { error: authorsError }) => ({
-    ...state,
-    authors: [],
-    authorsStatus: Status.Failure,
-    authorsError
-  })),
-
-  // third duplication 😞
-
-  on(BookActions.loadThumbnails, state => ({
-    ...state,
-    thumbnailsStatus: Status.Submitting,
-  })),
-
-  on(BookActions.loadThumbnailsSuccess, (state, { data: thumbnails }) => ({
-    ...state,
-    thumbnails,
-    thumbnailsStatus: Status.Successful,
-    thumbnailsError: undefined
-  })),
-
-  on(BookActions.loadThumbnailsFailure, (state, { error: thumbnailsError }) => ({
-    ...state,
-    thumbnails: [],
-    thumbnailsStatus: Status.Failure,
-    thumbnailsError
+    ...(type === BookActions.loadThumbnailsFailure.type ? {
+      thumbnails: [],
+      thumbnailsStatus: Status.Failure,
+      thumbnailsError: error
+    } : {})
   }))
 );
 

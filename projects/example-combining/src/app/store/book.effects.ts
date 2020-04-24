@@ -5,47 +5,37 @@ import { of } from 'rxjs';
 
 import * as BookActions from './book.actions';
 import { DataService } from '../../../../shared/data.service';
+import { ActionCreator } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
+
 
 
 @Injectable()
 export class BookEffects {
 
-  loadBooks$ = createEffect(() => {
+
+
+  loadItems$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookActions.loadBooks),
-      concatMap(() =>
-        this.service.getBooks().pipe(
-          map(data => BookActions.loadBooksSuccess({ data })),
-          catchError(error => of(BookActions.loadBooksFailure({ error }))))
+      ofType(BookActions.loadBooks,
+             BookActions.loadAuthors,
+             BookActions.loadThumbnails
+             ),
+      concatMap(action =>
+        this.getData(action).pipe(
+          map(() => BookActions.loadBooksSuccess({ data: undefined })),
+          // catchError(error => of(BookActions.loadBooksFailure({ error }))))
       )
     );
   });
 
-  // second duplication 🤨
-
-  loadAuthors$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(BookActions.loadAuthors),
-      concatMap(() =>
-        this.service.getAuthors().pipe(
-          map(data => BookActions.loadAuthorsSuccess({ data })),
-          catchError(error => of(BookActions.loadAuthorsFailure({ error }))))
-      )
-    );
-  });
-
-  // third duplication 😞
-
-  loadThumbnails$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(BookActions.loadThumbnails),
-      concatMap(() =>
-        this.service.getThumbnails().pipe(
-          map(data => BookActions.loadThumbnailsSuccess({ data })),
-          catchError(error => of(BookActions.loadThumbnailsFailure({ error }))))
-      )
-    );
-  });
+  getData(action: TypedAction<'[Book] Load Books' | '[Book] Load Authors' | '[Book] Load Thumbnails'>) {
+    switch (action.type) {
+      case BookActions.loadBooks.type: return this.service.getBooks();
+      case BookActions.loadAuthors.type: return this.service.getAuthors();
+      case BookActions.loadThumbnails.type: return this.service.getThumbnails();
+    }
+  }
 
   constructor(private actions$: Actions, private service: DataService) {}
 }

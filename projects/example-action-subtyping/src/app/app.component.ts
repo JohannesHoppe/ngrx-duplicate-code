@@ -11,7 +11,7 @@ import { Status } from './store/book.reducer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgRx: Regular App';
+  title = 'NgRx: Action Subtyping';
 
   books$ = this.store.select(BookSelectors.selectBooks);
   booksStatus$ = this.store.select(BookSelectors.selectBooksStatus);
