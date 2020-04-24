@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as BookActions from './book.actions';
+
 import { Book } from '../../../../shared/book';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -44,65 +45,55 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(BookActions.loadBooks, state => ({
+  on(BookActions.loadItems, (state, { kind }) => ({
     ...state,
-    booksStatus: Status.Submitting,
+    ...(kind === 'books' ? { booksStatus: Status.Submitting } : {}),
+    ...(kind === 'authors' ? { authorsStatus: Status.Submitting } : {}),
+    ...(kind === 'thumbnails' ? { thumbnailsStatus: Status.Submitting } : {})
   })),
 
-  on(BookActions.loadBooksSuccess, (state, { data: books }) => ({
+  on(BookActions.loadItemsSuccess, (state, { kind, data }) => ({
     ...state,
-    books,
-    booksStatus: Status.Successful,
-    booksError: undefined
+
+    ...(kind === 'books' ? {
+      books: data,
+      booksStatus: Status.Successful,
+      booksError: undefined
+    } : {}),
+
+    ...(kind === 'authors' ? {
+      authors: data,
+      authorsStatus: Status.Successful,
+      authorsError: undefined
+    } : {}),
+
+    ...(kind === 'thumbnails' ? {
+      thumbnails: data,
+      thumbnailsStatus: Status.Successful,
+      thumbnailsError: undefined
+    } : {})
   })),
 
-  on(BookActions.loadBooksFailure, (state, { error: booksError }) => ({
+  on(BookActions.loadItemsFailure, (state, { kind, error }) => ({
     ...state,
-    books: [],
-    booksStatus: Status.Failure,
-    booksError
-  })),
 
-  // second duplication 🤨
+    ...(kind === 'books' ? {
+      books: [],
+      booksStatus: Status.Failure,
+      booksError: error
+    } : {}),
 
-  on(BookActions.loadAuthors, state => ({
-    ...state,
-    authorsStatus: Status.Submitting,
-  })),
+    ...(kind === 'authors' ? {
+      authors: [],
+      authorsStatus: Status.Failure,
+      authorsError: error
+    } : {}),
 
-  on(BookActions.loadAuthorsSuccess, (state, { data: authors }) => ({
-    ...state,
-    authors,
-    authorsStatus: Status.Successful,
-    authorsError: undefined
-  })),
-
-  on(BookActions.loadAuthorsFailure, (state, { error: authorsError }) => ({
-    ...state,
-    authors: [],
-    authorsStatus: Status.Failure,
-    authorsError
-  })),
-
-  // third duplication 😞
-
-  on(BookActions.loadThumbnails, state => ({
-    ...state,
-    thumbnailsStatus: Status.Submitting,
-  })),
-
-  on(BookActions.loadThumbnailsSuccess, (state, { data: thumbnails }) => ({
-    ...state,
-    thumbnails,
-    thumbnailsStatus: Status.Successful,
-    thumbnailsError: undefined
-  })),
-
-  on(BookActions.loadThumbnailsFailure, (state, { error: thumbnailsError }) => ({
-    ...state,
-    thumbnails: [],
-    thumbnailsStatus: Status.Failure,
-    thumbnailsError
+    ...(kind === 'thumbnails' ? {
+      thumbnails: [],
+      thumbnailsStatus: Status.Failure,
+      thumbnailsError: error
+    } : {})
   }))
 );
 

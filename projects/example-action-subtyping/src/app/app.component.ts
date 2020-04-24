@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as BookSelectors from './store/book.selectors';
 import * as BookActions from './store/book.actions';
-import { Status } from './store/book.reducer';
 
 
 @Component({
@@ -31,15 +30,7 @@ export class AppComponent {
 
   constructor(private store: Store) { }
 
-  loadBooks() {
-    this.store.dispatch(BookActions.loadBooks());
-  }
-
-  loadAuthors() {
-    this.store.dispatch(BookActions.loadAuthors());
-  }
-
-  loadThumbnails() {
-    this.store.dispatch(BookActions.loadThumbnails());
+  loadItems(kind: BookActions.ActionKinds) {
+    this.store.dispatch(BookActions.loadItems({ kind }));
   }
 }

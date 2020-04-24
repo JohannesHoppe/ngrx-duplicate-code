@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, defer } from 'rxjs';
 
 import * as BookActions from './book.actions';
 import { DataService } from '../../../../shared/data.service';
@@ -10,40 +10,18 @@ import { DataService } from '../../../../shared/data.service';
 @Injectable()
 export class BookEffects {
 
-  loadBooks$ = createEffect(() => {
+  loadItems$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookActions.loadBooks),
-      concatMap(() =>
-        this.service.getBooks().pipe(
-          map(data => BookActions.loadBooksSuccess({ data })),
-          catchError(error => of(BookActions.loadBooksFailure({ error }))))
-      )
-    );
-  });
-
-  // second duplication 🤨
-
-  loadAuthors$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(BookActions.loadAuthors),
-      concatMap(() =>
-        this.service.getAuthors().pipe(
-          map(data => BookActions.loadAuthorsSuccess({ data })),
-          catchError(error => of(BookActions.loadAuthorsFailure({ error }))))
-      )
-    );
-  });
-
-  // third duplication 😞
-
-  loadThumbnails$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(BookActions.loadThumbnails),
-      concatMap(() =>
-        this.service.getThumbnails().pipe(
-          map(data => BookActions.loadThumbnailsSuccess({ data })),
-          catchError(error => of(BookActions.loadThumbnailsFailure({ error }))))
-      )
+      ofType(BookActions.loadItems),
+      concatMap(({ kind }) => defer(() => {
+        switch (kind) {
+          case 'books': return this.service.getBooks();
+          case 'authors': return this.service.getAuthors();
+          case 'thumbnails': return this.service.getThumbnails();
+        }}).pipe(
+          map((data) => BookActions.loadItemsSuccess({ kind, data })),
+          catchError(error => of(BookActions.loadItemsFailure({ kind, error })))
+      ))
     );
   });
 

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as BookSelectors from './store/book.selectors';
 import * as BookActions from './store/book.actions';
-import { Status } from './store/book.reducer';
 
 
 @Component({
