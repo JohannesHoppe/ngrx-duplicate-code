@@ -10,8 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import * as fromBooks from './store/book.reducer';
 import { BookEffects } from './store/book.effects';
-import { LoadButtonComponent } from './shared/load-button.component';
-import { ShowErrorComponent } from './shared/show-error.component';
+import { LoadButtonComponent } from '../../../shared/load-button.component';
+import { ShowErrorComponent } from '../../../shared/show-error.component';
 
 
 @NgModule({

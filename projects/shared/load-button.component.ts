@@ -1,5 +1,6 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { Status } from '../store/book.reducer';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Status } from '../regular-app/src/app/store/book.reducer';
 
 
 @Component({
