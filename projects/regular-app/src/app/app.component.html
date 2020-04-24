@@ -40,7 +40,7 @@
       </app-load-button>
 
       <div class="mt-4">
-        <img *ngFor="let thumbnail of thumbnails$ | async" [src]="thumbnail" width="100" class="mr-1">
+        <img *ngFor="let thumbnail of thumbnails$ | async" [src]="thumbnail" width="100" class="mr-1 mb-1">
       </div>
 
       <app-show-error [error]="thumbnailsError$ | async"></app-show-error>

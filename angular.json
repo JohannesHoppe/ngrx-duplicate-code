@@ -70,12 +70,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "regular-app:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -98,24 +92,11 @@
           "options": {
             "tsConfig": [
               "projects/regular-app/tsconfig.app.json",
-              "projects/regular-app/tsconfig.spec.json",
-              "projects/regular-app/e2e/tsconfig.json"
+              "projects/regular-app/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/regular-app/e2e/protractor.conf.js",
-            "devServerTarget": "regular-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "regular-app:serve:production"
-            }
           }
         }
       }
@@ -187,12 +168,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "example-action-subtyping:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -215,24 +190,11 @@
           "options": {
             "tsConfig": [
               "projects/example-action-subtyping/tsconfig.app.json",
-              "projects/example-action-subtyping/tsconfig.spec.json",
-              "projects/example-action-subtyping/e2e/tsconfig.json"
+              "projects/example-action-subtyping/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/example-action-subtyping/e2e/protractor.conf.js",
-            "devServerTarget": "example-action-subtyping:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "example-action-subtyping:serve:production"
-            }
           }
         }
       }
