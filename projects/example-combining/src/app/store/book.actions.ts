@@ -2,23 +2,6 @@ import { createAction, props } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Book } from '../../../../shared/book';
 
-
-// export const loadItems = createAction(
-//   '[Book] Load Items',
-//   props<{ kind: 'books' | 'authors' | 'thumbnails' }>()
-// );
-
-// export const loadItemsSuccess = createAction(
-//   '[Book] Load Items Success',
-//   props<{ kind: 'books' | 'authors' | 'thumbnails', data: Book[] | string[] }>()
-// );
-
-// export const loadItemsFailure = createAction(
-//   '[Book] Load Items Failure',
-//   props<{ kind: 'books' | 'authors' | 'thumbnails', error: HttpErrorResponse }>()
-// );
-
-
 export const loadBooks = createAction(
   '[Book] Load Books'
 );

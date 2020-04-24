@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "start:example1": "ng serve --project=example-action-subtyping --port=4201 --open",
+    "start:example1": "ng serve --project=example-combining --port=4201 --open",
+    "start:example2": "ng serve --project=example-action-subtyping --port=4202 --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint"
