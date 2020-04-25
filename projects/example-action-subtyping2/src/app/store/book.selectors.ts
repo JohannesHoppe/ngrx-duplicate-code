@@ -1,21 +1,23 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromBook from './book.reducer';
+import * as BookActions from './book.actions';
+
 
 export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
 );
 
-export const selectBooks = createSelector(
+export const selectItems = createSelector(
   selectBookState,
-  (booksState, props) => booksState.books
+  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].data
 );
 
-export const selectBooksStatus = createSelector(
+export const selectItemsStatus = createSelector(
   selectBookState,
-  (booksState, props) => booksState.booksStatus
+  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].status
 );
 
-export const selectBooksError = createSelector(
+export const selectItemsError = createSelector(
   selectBookState,
-  (booksState, props) => booksState.booksError
+  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].error
 );

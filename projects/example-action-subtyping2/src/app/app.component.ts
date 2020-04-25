@@ -10,23 +10,23 @@ import * as BookActions from './store/book.actions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgRx: Action Subtyping';
+  title = 'NgRx: Action Subtyping 2';
 
-  books$ = this.store.select(BookSelectors.selectBooks);
-  booksStatus$ = this.store.select(BookSelectors.selectBooksStatus);
-  booksError$ = this.store.select(BookSelectors.selectBooksError);
+  books$ = this.store.select(BookSelectors.selectItems, { kind: 'books'});
+  booksStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'books'});
+  booksError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'books'});
 
   // second duplication 🤨
 
-  authors$ = this.store.select(BookSelectors.selectAuthors);
-  authorsStatus$ = this.store.select(BookSelectors.selectAuthorsStatus);
-  authorsError$ = this.store.select(BookSelectors.selectAuthorsError);
+  authors$ = this.store.select(BookSelectors.selectItems, { kind: 'authors'});
+  authorsStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'authors'});
+  authorsError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'authors'});
 
   // third duplication 😞
 
-  thumbnails$ = this.store.select(BookSelectors.selectThumbnails);
-  thumbnailsStatus$ = this.store.select(BookSelectors.selectThumbnailsStatus);
-  thumbnailsError$ = this.store.select(BookSelectors.selectThumbnailsError);
+  thumbnails$ = this.store.select(BookSelectors.selectItems, { kind: 'thumbnails'});
+  thumbnailsStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'thumbnails'});
+  thumbnailsError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'thumbnails'});
 
   constructor(private store: Store) { }
 

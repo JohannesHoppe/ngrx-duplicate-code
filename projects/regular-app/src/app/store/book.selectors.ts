@@ -7,17 +7,17 @@ export const selectBookState = createFeatureSelector<fromBook.State>(
 
 export const selectBooks = createSelector(
   selectBookState,
-  booksState => booksState.books
+  (booksState: fromBook.State) => booksState.books
 );
 
 export const selectBooksStatus = createSelector(
   selectBookState,
-  booksState => booksState.booksStatus
+  (booksState: fromBook.State) => booksState.booksStatus
 );
 
 export const selectBooksError = createSelector(
   selectBookState,
-  booksState => booksState.booksError
+  (booksState: fromBook.State) => booksState.booksError
 );
 
 // second duplication 🤨
