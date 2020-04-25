@@ -396,6 +396,105 @@
           }
         }
       }
+    },
+    "example-action-subtyping3": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/example-action-subtyping3",
+      "sourceRoot": "projects/example-action-subtyping3/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/example-action-subtyping3",
+            "index": "projects/example-action-subtyping3/src/index.html",
+            "main": "projects/example-action-subtyping3/src/main.ts",
+            "polyfills": "projects/example-action-subtyping3/src/polyfills.ts",
+            "tsConfig": "projects/example-action-subtyping3/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/example-action-subtyping3/src/favicon.ico",
+              "projects/example-action-subtyping3/src/assets"
+            ],
+            "styles": [
+              "projects/example-action-subtyping3/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/example-action-subtyping3/src/environments/environment.ts",
+                  "with": "projects/example-action-subtyping3/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "example-action-subtyping3:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example-action-subtyping3:build:production"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/example-action-subtyping3/src/test.ts",
+            "polyfills": "projects/example-action-subtyping3/src/polyfills.ts",
+            "tsConfig": "projects/example-action-subtyping3/tsconfig.spec.json",
+            "karmaConfig": "projects/example-action-subtyping3/karma.conf.js",
+            "assets": [
+              "projects/example-action-subtyping3/src/favicon.ico",
+              "projects/example-action-subtyping3/src/assets"
+            ],
+            "styles": [
+              "projects/example-action-subtyping3/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/example-action-subtyping3/tsconfig.app.json",
+              "projects/example-action-subtyping3/tsconfig.spec.json",
+              "projects/example-action-subtyping3/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "regular-app",
