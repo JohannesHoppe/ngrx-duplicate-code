@@ -298,28 +298,28 @@
         }
       }
     },
-    "example-action-subtyping2": {
+    "example-action-subtyping-nested": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/example-action-subtyping2",
-      "sourceRoot": "projects/example-action-subtyping2/src",
+      "root": "projects/example-action-subtyping-nested",
+      "sourceRoot": "projects/example-action-subtyping-nested/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/example-action-subtyping2",
-            "index": "projects/example-action-subtyping2/src/index.html",
-            "main": "projects/example-action-subtyping2/src/main.ts",
-            "polyfills": "projects/example-action-subtyping2/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping2/tsconfig.app.json",
+            "outputPath": "dist/example-action-subtyping-nested",
+            "index": "projects/example-action-subtyping-nested/src/index.html",
+            "main": "projects/example-action-subtyping-nested/src/main.ts",
+            "polyfills": "projects/example-action-subtyping-nested/src/polyfills.ts",
+            "tsConfig": "projects/example-action-subtyping-nested/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/example-action-subtyping2/src/favicon.ico",
-              "projects/example-action-subtyping2/src/assets"
+              "projects/example-action-subtyping-nested/src/favicon.ico",
+              "projects/example-action-subtyping-nested/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping2/src/styles.scss"
+              "projects/example-action-subtyping-nested/src/styles.scss"
             ],
             "scripts": []
           },
@@ -327,8 +327,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/example-action-subtyping2/src/environments/environment.ts",
-                  "with": "projects/example-action-subtyping2/src/environments/environment.prod.ts"
+                  "replace": "projects/example-action-subtyping-nested/src/environments/environment.ts",
+                  "with": "projects/example-action-subtyping-nested/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -357,27 +357,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "example-action-subtyping2:build"
+            "browserTarget": "example-action-subtyping-nested:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-action-subtyping2:build:production"
+              "browserTarget": "example-action-subtyping-nested:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/example-action-subtyping2/src/test.ts",
-            "polyfills": "projects/example-action-subtyping2/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping2/tsconfig.spec.json",
-            "karmaConfig": "projects/example-action-subtyping2/karma.conf.js",
+            "main": "projects/example-action-subtyping-nested/src/test.ts",
+            "polyfills": "projects/example-action-subtyping-nested/src/polyfills.ts",
+            "tsConfig": "projects/example-action-subtyping-nested/tsconfig.spec.json",
+            "karmaConfig": "projects/example-action-subtyping-nested/karma.conf.js",
             "assets": [
-              "projects/example-action-subtyping2/src/favicon.ico",
-              "projects/example-action-subtyping2/src/assets"
+              "projects/example-action-subtyping-nested/src/favicon.ico",
+              "projects/example-action-subtyping-nested/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping2/src/styles.scss"
+              "projects/example-action-subtyping-nested/src/styles.scss"
             ],
             "scripts": []
           }
@@ -386,9 +386,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/example-action-subtyping2/tsconfig.app.json",
-              "projects/example-action-subtyping2/tsconfig.spec.json",
-              "projects/example-action-subtyping2/e2e/tsconfig.json"
+              "projects/example-action-subtyping-nested/tsconfig.app.json",
+              "projects/example-action-subtyping-nested/tsconfig.spec.json",
+              "projects/example-action-subtyping-nested/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -397,28 +397,28 @@
         }
       }
     },
-    "example-action-subtyping3": {
+    "example-higher-order": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/example-action-subtyping3",
-      "sourceRoot": "projects/example-action-subtyping3/src",
+      "root": "projects/example-higher-order",
+      "sourceRoot": "projects/example-higher-order/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/example-action-subtyping3",
-            "index": "projects/example-action-subtyping3/src/index.html",
-            "main": "projects/example-action-subtyping3/src/main.ts",
-            "polyfills": "projects/example-action-subtyping3/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping3/tsconfig.app.json",
+            "outputPath": "dist/example-higher-order",
+            "index": "projects/example-higher-order/src/index.html",
+            "main": "projects/example-higher-order/src/main.ts",
+            "polyfills": "projects/example-higher-order/src/polyfills.ts",
+            "tsConfig": "projects/example-higher-order/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/example-action-subtyping3/src/favicon.ico",
-              "projects/example-action-subtyping3/src/assets"
+              "projects/example-higher-order/src/favicon.ico",
+              "projects/example-higher-order/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping3/src/styles.scss"
+              "projects/example-higher-order/src/styles.scss"
             ],
             "scripts": []
           },
@@ -426,8 +426,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/example-action-subtyping3/src/environments/environment.ts",
-                  "with": "projects/example-action-subtyping3/src/environments/environment.prod.ts"
+                  "replace": "projects/example-higher-order/src/environments/environment.ts",
+                  "with": "projects/example-higher-order/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -456,27 +456,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "example-action-subtyping3:build"
+            "browserTarget": "example-higher-order:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-action-subtyping3:build:production"
+              "browserTarget": "example-higher-order:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/example-action-subtyping3/src/test.ts",
-            "polyfills": "projects/example-action-subtyping3/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping3/tsconfig.spec.json",
-            "karmaConfig": "projects/example-action-subtyping3/karma.conf.js",
+            "main": "projects/example-higher-order/src/test.ts",
+            "polyfills": "projects/example-higher-order/src/polyfills.ts",
+            "tsConfig": "projects/example-higher-order/tsconfig.spec.json",
+            "karmaConfig": "projects/example-higher-order/karma.conf.js",
             "assets": [
-              "projects/example-action-subtyping3/src/favicon.ico",
-              "projects/example-action-subtyping3/src/assets"
+              "projects/example-higher-order/src/favicon.ico",
+              "projects/example-higher-order/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping3/src/styles.scss"
+              "projects/example-higher-order/src/styles.scss"
             ],
             "scripts": []
           }
@@ -485,9 +485,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/example-action-subtyping3/tsconfig.app.json",
-              "projects/example-action-subtyping3/tsconfig.spec.json",
-              "projects/example-action-subtyping3/e2e/tsconfig.json"
+              "projects/example-higher-order/tsconfig.app.json",
+              "projects/example-higher-order/tsconfig.spec.json",
+              "projects/example-higher-order/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
