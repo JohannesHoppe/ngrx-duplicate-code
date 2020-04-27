@@ -10,20 +10,20 @@ import { DataService } from '../../../../shared/data.service';
 @Injectable()
 export class BookEffects {
 
-  loadItems$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(BookActions.loadItems),
-      concatMap(({ kind }) => defer(() => {
-        switch (kind) {
-          case 'books': return this.service.getBooks();
-          case 'authors': return this.service.getAuthors();
-          case 'thumbnails': return this.service.getThumbnails();
-        }}).pipe(
-          map((data) => BookActions.loadItemsSuccess({ kind, data })),
-          catchError(error => of(BookActions.loadItemsFailure({ kind, error })))
-      ))
-    );
-  });
+  // loadItems$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(BookActions.loadItems),
+  //     concatMap(({ kind }) => defer(() => {
+  //       switch (kind) {
+  //         case 'books': return this.service.getBooks();
+  //         case 'authors': return this.service.getAuthors();
+  //         case 'thumbnails': return this.service.getThumbnails();
+  //       }}).pipe(
+  //         map((data) => BookActions.loadItemsSuccess({ kind, data })),
+  //         catchError(error => of(BookActions.loadItemsFailure({ kind, error })))
+  //     ))
+  //   );
+  // });
 
   constructor(private actions$: Actions, private service: DataService) {}
 }

@@ -10,27 +10,31 @@ import * as BookActions from './store/book.actions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgRx: Action Subtyping 2';
+  title = 'NgRx: Higher-Order';
 
-  books$ = this.store.select(BookSelectors.selectItems, { kind: 'books'});
-  booksStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'books'});
-  booksError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'books'});
+  books$ = this.store.select(BookSelectors.booksSelectors.selectItems);
+  booksStatus$ = this.store.select(BookSelectors.booksSelectors.selectItemsStatus);
+  booksError$ = this.store.select(BookSelectors.booksSelectors.selectItemsError);
 
-  // second duplication 🤨
+  authors$ = this.store.select(BookSelectors.authorsSelectors.selectItems);
+  authorsStatus$ = this.store.select(BookSelectors.authorsSelectors.selectItemsStatus);
+  authorsError$ = this.store.select(BookSelectors.authorsSelectors.selectItemsError);
 
-  authors$ = this.store.select(BookSelectors.selectItems, { kind: 'authors'});
-  authorsStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'authors'});
-  authorsError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'authors'});
-
-  // third duplication 😞
-
-  thumbnails$ = this.store.select(BookSelectors.selectItems, { kind: 'thumbnails'});
-  thumbnailsStatus$ = this.store.select(BookSelectors.selectItemsStatus, { kind: 'thumbnails'});
-  thumbnailsError$ = this.store.select(BookSelectors.selectItemsError, { kind: 'thumbnails'});
+  thumbnails$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItems);
+  thumbnailsStatus$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsStatus);
+  thumbnailsError$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsError);
 
   constructor(private store: Store) { }
 
-  loadItems(kind: BookActions.ActionKinds) {
-    this.store.dispatch(BookActions.loadItems({ kind }));
+  loadBooks() {
+    this.store.dispatch(BookActions.booksActions.load());
+  }
+
+  loadAuthors() {
+    this.store.dispatch(BookActions.authorsActions.load());
+  }
+
+  loadThumbnails() {
+    this.store.dispatch(BookActions.thumbnailsActions.load());
   }
 }

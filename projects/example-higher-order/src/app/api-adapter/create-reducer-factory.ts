@@ -7,13 +7,13 @@ export function createReducerFactory<T extends string, TData>(type: T, key: stri
 
   function getReducer() {
 
-    const { getInitialApiState } = createInitialStateFactory<TData>(key, defaultValue);
-    const { getApiActions } = createActionsFactory<T, TData>(type);
+    const { getInitialState } = createInitialStateFactory<TData>(key, defaultValue);
+    const { getActions } = createActionsFactory<T, TData>(type);
 
-    const { load, loadSuccess, loadFailure } = getApiActions();
+    const { load, loadSuccess, loadFailure } = getActions();
 
     const reducer = createReducer(
-      getInitialApiState(),
+      getInitialState(),
 
       on(load, (state) => ({
         ...state,

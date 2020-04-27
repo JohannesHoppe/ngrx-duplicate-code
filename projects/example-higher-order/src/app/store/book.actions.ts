@@ -1,5 +1,6 @@
 import { booksApiAdapter, authorsApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 
-export const loadBooksActions = booksApiAdapter.getApiActions();
-export const loadAuthorsActions = authorsApiAdapter.getApiActions();
-export const loadThumbnailsActions = thumbnailsApiAdapter.getApiActions();
+
+export const booksActions = booksApiAdapter.getActions();
+export const authorsActions = authorsApiAdapter.getActions();
+export const thumbnailsActions = thumbnailsApiAdapter.getActions();

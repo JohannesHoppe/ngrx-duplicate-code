@@ -14,7 +14,7 @@ export function typeFailure<T extends string>(type: T) {
 
 export function createActionsFactory<T extends string, TData>(type: T) {
 
-  function getApiActions() {
+  function getActions() {
 
     const load = createAction(type);
 
@@ -35,5 +35,5 @@ export function createActionsFactory<T extends string, TData>(type: T) {
     };
   }
 
-  return { getApiActions };
+  return { getActions };
 }

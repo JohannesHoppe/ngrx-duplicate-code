@@ -1,6 +1,7 @@
 import { createActionsFactory } from './create-actions-factory';
 import { createInitialStateFactory } from './create-initial-state-factory';
 import { createReducerFactory } from './create-reducer-factory';
+import { createSelectorsFactory } from './create-selectors-factory';
 
 export { typeSuccess, typeFailure } from './create-actions-factory';
 export { Status, SubmittableItem } from './create-initial-state-factory';
@@ -10,13 +11,12 @@ export function createApiAdapter<T extends string, TData>(type: T, key: string, 
   const state = createInitialStateFactory<TData>(key, defaultValue);
   const actions = createActionsFactory<T, TData>(type);
   const reducer = createReducerFactory<T, TData>(type, key, defaultValue);
-
+  const selectors = createSelectorsFactory(key);
 
   return {
     ...state,
     ...actions,
     ...reducer,
+    ...selectors
   };
 }
-
-

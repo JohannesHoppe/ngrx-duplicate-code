@@ -15,7 +15,7 @@ export interface SubmittableItem<TData> {
 
 export function createInitialStateFactory<TData>(key: string, initialValueOfT: TData) {
 
-  function getInitialApiState(): { [key: string]: SubmittableItem<TData>} {
+  function getInitialState(): { [key: string]: SubmittableItem<TData>} {
     return {
       [key] : {
         data: initialValueOfT,
@@ -25,5 +25,5 @@ export function createInitialStateFactory<TData>(key: string, initialValueOfT: T
     };
   }
 
-  return { getInitialApiState };
+  return { getInitialState };
 }

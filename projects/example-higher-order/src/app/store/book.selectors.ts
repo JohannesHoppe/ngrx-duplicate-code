@@ -1,23 +1,13 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector } from '@ngrx/store';
 import * as fromBook from './book.reducer';
-import * as BookActions from './book.actions';
+
+import { booksApiAdapter, authorsApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 
 
 export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
 );
 
-export const selectItems = createSelector(
-  selectBookState,
-  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].data
-);
-
-export const selectItemsStatus = createSelector(
-  selectBookState,
-  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].status
-);
-
-export const selectItemsError = createSelector(
-  selectBookState,
-  (booksState: fromBook.State, props: { kind: BookActions.ActionKinds }) => booksState[props.kind].error
-);
+export const booksSelectors = booksApiAdapter.getSelectors(selectBookState);
+export const authorsSelectors = authorsApiAdapter.getSelectors(selectBookState);
+export const thumbnailsSelectors = thumbnailsApiAdapter.getSelectors(selectBookState);
