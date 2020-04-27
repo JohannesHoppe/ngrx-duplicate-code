@@ -18,16 +18,17 @@ export interface State {
   thumbnails: SubmittableItem<string[]>;
 }
 
-// export const initialState: State = {
-//   books: { ... initialSubmittableItem },
-//   authors: { ... initialSubmittableItem },
-//   thumbnails: { ... initialSubmittableItem },
-// };
+export const initialState: State = {
+  books: undefined,
+  authors: undefined,
+  thumbnails: undefined,
+};
 
-export function reducer(state: any, action: Action) {
-  debugger;
-  state = booksReducer(state, action);
-  state = authorsReducer(state, action);
-  state = thumbnailsReducer(state, action);
-  return state;
+export function reducer(state: State = initialState, action: Action) {
+
+  return {
+    books: booksReducer(state.books, action),
+    authors: authorsReducer(state.authors, action),
+    thumbnails: thumbnailsReducer(state.thumbnails, action),
+  };
 }

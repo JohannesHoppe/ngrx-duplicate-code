@@ -13,15 +13,13 @@ export interface SubmittableItem<TData> {
   error: HttpErrorResponse;
 }
 
-export function createInitialStateFactory<TData>(key: string, initialValueOfT: TData) {
+export function createInitialStateFactory<TData>(initialValueOfT: TData) {
 
-  function getInitialState(): { [key: string]: SubmittableItem<TData>} {
+  function getInitialState(): SubmittableItem<TData> {
     return {
-      [key] : {
-        data: initialValueOfT,
-        status: Status.NotSubmitted,
-        error: undefined
-      }
+      data: initialValueOfT,
+      status: Status.NotSubmitted,
+      error: undefined
     };
   }
 

@@ -8,6 +8,6 @@ export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
 );
 
-export const booksSelectors = booksApiAdapter.getSelectors(selectBookState);
-export const authorsSelectors = authorsApiAdapter.getSelectors(selectBookState);
-export const thumbnailsSelectors = thumbnailsApiAdapter.getSelectors(selectBookState);
+export const booksSelectors = booksApiAdapter.getSelectors('books', selectBookState);
+export const authorsSelectors = authorsApiAdapter.getSelectors('authors', selectBookState);
+export const thumbnailsSelectors = thumbnailsApiAdapter.getSelectors('thumbnails', selectBookState);

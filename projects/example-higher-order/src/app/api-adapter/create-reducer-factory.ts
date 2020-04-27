@@ -3,11 +3,11 @@ import { createInitialStateFactory, Status } from './create-initial-state-factor
 import { createActionsFactory } from './create-actions-factory';
 
 
-export function createReducerFactory<T extends string, TData>(type: T, key: string, defaultValue: TData) {
+export function createReducerFactory<T extends string, TData>(type: T, defaultValue: TData) {
 
   function getReducer() {
 
-    const { getInitialState } = createInitialStateFactory<TData>(key, defaultValue);
+    const { getInitialState } = createInitialStateFactory<TData>(defaultValue);
     const { getActions } = createActionsFactory<T, TData>(type);
 
     const { load, loadSuccess, loadFailure } = getActions();
@@ -17,31 +17,23 @@ export function createReducerFactory<T extends string, TData>(type: T, key: stri
 
       on(load, (state) => ({
         ...state,
-        [key]: {
-          ...state[key],
           status: Status.Submitting
-        }
       })),
 
       on(loadSuccess, (state, { data }) => ({
         ...state,
-        [key]: {
-          ...state[key],
-          data,
-          status: Status.Successful,
-          error: undefined
-        }
+        data,
+        status: Status.Successful,
+        error: undefined
       })),
 
       on(loadFailure, (state, { error }) => ({
         ...state,
-        [key]: {
-          ...state[key],
-          data: [],
-          status: Status.Failure,
-          error
-        }
+        data: defaultValue,
+        status: Status.Failure,
+        error
       }))
+
     );
 
     return reducer;
