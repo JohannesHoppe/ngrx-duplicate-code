@@ -1,32 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import * as BookActions from './book.actions';
-
-import { Book } from '../../../../shared/book';
-import { HttpErrorResponse } from '@angular/common/http';
+import { booksApiAdapter, authorsApiAdapter, thumbnailsApiAdapter } from './book.adapter';
+import { SubmittableItem } from '../api-adapter/api-adapter';
 
 export const bookFeatureKey = 'book';
 
-export enum Status {
-  NotSubmitted,
-  Submitting,
-  Successful,
-  Failure
-}
+export const booksReducer = booksApiAdapter.getReducer();
+export const authorsReducer = authorsApiAdapter.getReducer();
+export const thumbnailsReducer = thumbnailsApiAdapter.getReducer();
 
-export interface SubmittableItem<T> {
-  data: T[];
-  status: Status;
-  error: HttpErrorResponse;
-}
 
-const initialSubmittableItem = {
-  data: [],
-  status: Status.NotSubmitted,
-  error: undefined,
-};
 
 export interface State {
-  books: SubmittableItem<Book>;
+  books: SubmittableItem<Book[]>;
   authors: SubmittableItem<string>;
   thumbnails: SubmittableItem<string>;
 }

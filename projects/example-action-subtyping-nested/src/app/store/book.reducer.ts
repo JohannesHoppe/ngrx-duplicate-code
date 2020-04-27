@@ -13,8 +13,8 @@ export enum Status {
   Failure
 }
 
-export interface SubmittableItem<T> {
-  data: T[];
+export interface SubmittableItem<TData> {
+  data: TData;
   status: Status;
   error: HttpErrorResponse;
 }
@@ -26,9 +26,9 @@ const initialSubmittableItem = {
 };
 
 export interface State {
-  books: SubmittableItem<Book>;
-  authors: SubmittableItem<string>;
-  thumbnails: SubmittableItem<string>;
+  books: SubmittableItem<Book[]>;
+  authors: SubmittableItem<string[]>;
+  thumbnails: SubmittableItem<string[]>;
 }
 
 export const initialState: State = {
