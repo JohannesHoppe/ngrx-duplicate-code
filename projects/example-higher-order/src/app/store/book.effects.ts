@@ -1,29 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
-import { of, defer } from 'rxjs';
+import { Actions } from '@ngrx/effects';
 
-import * as BookActions from './book.actions';
 import { DataService } from '../../../../shared/data.service';
+import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 
 
 @Injectable()
 export class BookEffects {
 
-  // loadItems$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(BookActions.loadItems),
-  //     concatMap(({ kind }) => defer(() => {
-  //       switch (kind) {
-  //         case 'books': return this.service.getBooks();
-  //         case 'authors': return this.service.getAuthors();
-  //         case 'thumbnails': return this.service.getThumbnails();
-  //       }}).pipe(
-  //         map((data) => BookActions.loadItemsSuccess({ kind, data })),
-  //         catchError(error => of(BookActions.loadItemsFailure({ kind, error })))
-  //     ))
-  //   );
-  // });
+  loadBooks$ = booksApiAdapter.getEffect(this.actions$, () => this.service.getBooks());
+  loadAuthors$ = authorsApiAdapter.getEffect(this.actions$, () => this.service.getAuthors());
+  loadThumbnails$ = thumbnailsApiAdapter.getEffect(this.actions$, () => this.service.getThumbnails());
 
   constructor(private actions$: Actions, private service: DataService) {}
 }

@@ -33,7 +33,6 @@ export function createReducerFactory<T extends string, TData>(type: T, defaultVa
         status: Status.Failure,
         error
       }))
-
     );
 
     return reducer;
