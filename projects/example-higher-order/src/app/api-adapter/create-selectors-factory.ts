@@ -1,5 +1,4 @@
-import { createAction, createSelector, MemoizedSelector } from '@ngrx/store';
-import { HttpErrorResponse } from '@angular/common/http';
+import { createSelector } from '@ngrx/store';
 
 // TODO: typing
 export function createSelectorsFactory() {
@@ -20,8 +19,6 @@ export function createSelectorsFactory() {
       featureSelector,
       state => state[key].error
     );
-
-
 
     return {
       selectItems,

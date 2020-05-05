@@ -47,4 +47,16 @@
     </div>
 
   </div>
+
+  <!-- -- -->
+
+  <div class="content row">
+    <div class="col-sm">
+
+      <h3>Counter: {{ counter$ | async }}</h3>
+      <button class="btn btn-secondary mr-2" (click)="decrementCounter()">-</button>
+      <button class="btn btn-secondary" (click)="incrementCounter()">+</button>
+
+    </div>
+  </div>
 </div>

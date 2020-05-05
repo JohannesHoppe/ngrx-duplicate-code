@@ -24,6 +24,8 @@ export class AppComponent {
   thumbnailsStatus$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsStatus);
   thumbnailsError$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsError);
 
+  counter$ = this.store.select(BookSelectors.selectCounter);
+
   constructor(private store: Store) { }
 
   loadBooks() {
@@ -36,5 +38,13 @@ export class AppComponent {
 
   loadThumbnails() {
     this.store.dispatch(BookActions.thumbnailsActions.load());
+  }
+
+  incrementCounter() {
+    this.store.dispatch(BookActions.incrementCounter());
+  }
+
+  decrementCounter() {
+    this.store.dispatch(BookActions.decrementCounter());
   }
 }
