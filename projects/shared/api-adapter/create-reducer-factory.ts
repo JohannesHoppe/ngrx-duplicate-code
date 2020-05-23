@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { createInitialStateFactory, Status } from './create-initial-state-factory';
+
 import { createActionsFactory } from './create-actions-factory';
+import { createInitialStateFactory, Status } from './create-initial-state-factory';
 
 
 export function createReducerFactory<T extends string, TData>(type: T, defaultValue: TData) {

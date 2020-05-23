@@ -1,5 +1,7 @@
-import { createSelector, MemoizedSelector, DefaultProjectorFn } from '@ngrx/store';
+import { createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
+
 import { SubmittableItem } from './create-initial-state-factory';
+
 
 export function createSelectorsFactory<TData>() {
 

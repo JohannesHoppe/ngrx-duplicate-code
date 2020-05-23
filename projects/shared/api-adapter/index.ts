@@ -8,4 +8,4 @@ export { createSelectorsFactory } from './create-selectors-factory';
 export { typeSuccess, typeFailure } from './create-actions-factory';
 export { Status, SubmittableItem } from './create-initial-state-factory';
 
-export { combineSomeReducer } from './helper';
+export { combineSomeReducer } from './combine-some-reducer';

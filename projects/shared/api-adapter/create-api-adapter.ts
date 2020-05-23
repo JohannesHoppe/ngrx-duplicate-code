@@ -4,6 +4,7 @@ import { createInitialStateFactory } from './create-initial-state-factory';
 import { createReducerFactory } from './create-reducer-factory';
 import { createSelectorsFactory } from './create-selectors-factory';
 
+
 export function createApiAdapter<T extends string, TData>(type: T, defaultValue: TData) {
 
   const state = createInitialStateFactory<TData>(defaultValue);
