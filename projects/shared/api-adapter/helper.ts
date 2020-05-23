@@ -12,13 +12,10 @@ export function combineSomeReducer<T, V extends Action = Action>(
 
       const newState = combinedReducer(state, action);
 
-      // TODO: think about some more checks to avoid itentical copies
-      const x = {
+      // TODO: investigate if we should avoid identical copies here
+      return {
         ...state,
         ...newState
       };
-
-      console.log(state, x);
-      return x;
     };
 }
