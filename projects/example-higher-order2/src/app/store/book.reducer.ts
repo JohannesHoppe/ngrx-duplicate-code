@@ -1,7 +1,7 @@
 import { combineReducers, createReducer, on } from '@ngrx/store';
 import reduceReducers from 'reduce-reducers';
 
-import { SubmittableItem } from 'projects/shared/api-adapter';
+import { SubmittableItem, combineSomeReducer } from 'projects/shared/api-adapter';
 import { Book } from 'projects/shared/book';
 
 import * as BookActions from './book.actions';
@@ -50,12 +50,20 @@ export const counterReducer = createReducer(
   })),
 );
 
+// the normal combineReducers overrides unknown properties
+/*
 export const adapterReducer = combineReducers({
   books: booksReducer,
   authors: authorsReducer,
   thumbnails: thumbnailsReducer,
-  counter: s => s // it only has to pass through the state
+  counter: s => s // it only has to passthrough the state
 });
+*/
 
+export const adapterReducer = combineSomeReducer({
+  books: booksReducer,
+  authors: authorsReducer,
+  thumbnails: thumbnailsReducer
+});
 
 export const reducer = reduceReducers(initialState, adapterReducer, counterReducer);
