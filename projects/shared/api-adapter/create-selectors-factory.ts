@@ -1,23 +1,24 @@
-import { createSelector } from '@ngrx/store';
+import { createSelector, MemoizedSelector, DefaultProjectorFn } from '@ngrx/store';
+import { SubmittableItem } from './create-initial-state-factory';
 
-// TODO: typing
-export function createSelectorsFactory() {
+export function createSelectorsFactory<TData>() {
 
-  function getSelectors(key: string, featureSelector: any) {
+  function getSelectors(selectBooks:
+    MemoizedSelector<object, SubmittableItem<TData>, DefaultProjectorFn<SubmittableItem<TData>>>) {
 
     const selectItems = createSelector(
-      featureSelector,
-      state => state[key].data
+      selectBooks,
+      state => state.data
     );
 
     const selectItemsStatus = createSelector(
-      featureSelector,
-      state => state[key].status
+      selectBooks,
+      state => state.status
     );
 
     const selectItemsError = createSelector(
-      featureSelector,
-      state => state[key].error
+      selectBooks,
+      state => state.error
     );
 
     return {

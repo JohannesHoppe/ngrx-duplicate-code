@@ -9,7 +9,7 @@ export function createApiAdapter<T extends string, TData>(type: T, defaultValue:
   const state = createInitialStateFactory<TData>(defaultValue);
   const actions = createActionsFactory<T, TData>(type);
   const reducer = createReducerFactory<T, TData>(type, defaultValue);
-  const selectors = createSelectorsFactory();
+  const selectors = createSelectorsFactory<TData>();
   const effect = createEffectFactory<T, TData>(type);
 
   return {
