@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromBook from './book.reducer';
 
-import { booksApiAdapter, authorsApiAdapter, thumbnailsApiAdapter } from './book.adapter';
+import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
+import * as fromBook from './book.reducer';
 
 
 export const selectBookState = createFeatureSelector<fromBook.State>(

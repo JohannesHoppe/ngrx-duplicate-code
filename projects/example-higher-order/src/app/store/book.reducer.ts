@@ -1,9 +1,10 @@
 import { combineReducers, createReducer, on } from '@ngrx/store';
+import { SubmittableItem } from 'projects/shared/api-adapter';
 import { Book } from 'projects/shared/book';
 
-import { SubmittableItem } from '../api-adapter/api-adapter';
-import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 import * as BookActions from './book.actions';
+import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
+
 
 export const bookFeatureKey = 'book';
 

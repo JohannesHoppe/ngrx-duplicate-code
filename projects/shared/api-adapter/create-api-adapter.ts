@@ -4,9 +4,6 @@ import { createInitialStateFactory } from './create-initial-state-factory';
 import { createReducerFactory } from './create-reducer-factory';
 import { createSelectorsFactory } from './create-selectors-factory';
 
-export { typeSuccess, typeFailure } from './create-actions-factory';
-export { Status, SubmittableItem } from './create-initial-state-factory';
-
 export function createApiAdapter<T extends string, TData>(type: T, defaultValue: TData) {
 
   const state = createInitialStateFactory<TData>(defaultValue);
