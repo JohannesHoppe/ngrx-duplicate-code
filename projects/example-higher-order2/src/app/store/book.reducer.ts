@@ -1,9 +1,13 @@
 import { combineReducers, createReducer, on } from '@ngrx/store';
+import reduceReducers from 'reduce-reducers';
+
 import { SubmittableItem } from 'projects/shared/api-adapter';
 import { Book } from 'projects/shared/book';
 
 import * as BookActions from './book.actions';
 import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
+import { Status } from 'projects/example-action-subtyping/src/app/store/book.reducer';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 export const bookFeatureKey = 'book';
@@ -21,23 +25,37 @@ export interface State {
 }
 
 export const initialState: State = {
-  books: undefined,
+  books: {
+    data: [{ isbn: '0', title: 'Test Book', description: '', firstThumbnailUrl: '', rating: 5}],
+    status: Status.Successful,
+    error: undefined,
+  },
   authors: undefined,
   thumbnails: undefined,
   counter: 1
 };
 
 // counter: regular reducer for demonstration
-const counterReducer = createReducer(
-  initialState.counter,
+export const counterReducer = createReducer(
+  initialState,
 
-  on(BookActions.incrementCounter, state => state + 1),
-  on(BookActions.decrementCounter, state => state - 1),
+  on(BookActions.incrementCounter, state => ({
+    ...state,
+    counter: state.counter + 1
+  })),
+
+  on(BookActions.decrementCounter, state => ({
+    ...state,
+    counter: state.counter - 1
+  })),
 );
 
-export const reducer = combineReducers({
+export const adapterReducer = combineReducers({
   books: booksReducer,
   authors: authorsReducer,
   thumbnails: thumbnailsReducer,
-  counter: counterReducer
-}, initialState);
+  counter: s => s // it only has to pass through the state
+});
+
+
+export const reducer = reduceReducers(initialState, adapterReducer, counterReducer);
