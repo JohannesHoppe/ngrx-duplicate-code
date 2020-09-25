@@ -10,10 +10,6 @@ import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book
 
 export const bookFeatureKey = 'book';
 
-export const booksReducer = booksApiAdapter.getReducer();
-export const authorsReducer = authorsApiAdapter.getReducer();
-export const thumbnailsReducer = thumbnailsApiAdapter.getReducer();
-
 
 export interface State {
   books: SubmittableItem<Book[]>;
@@ -30,7 +26,7 @@ const oneTestBook = {
 
 export const initialState: State = {
   books: oneTestBook,
-  authors: undefined,
+  authors: undefined, // this would also work: authorsApiAdapter.getInitialState() -- but reducers define there initial state on their own
   thumbnails: undefined,
   counter: 1
 };
@@ -53,17 +49,17 @@ export const counterReducer = createReducer(
 // the normal combineReducers overrides unknown properties
 /*
 export const adapterReducer = combineReducers({
-  books: booksReducer,
-  authors: authorsReducer,
-  thumbnails: thumbnailsReducer,
+  books: booksApiAdapter.getReducer(),
+  authors: authorsApiAdapter.getReducer(),
+  thumbnails: thumbnailsApiAdapter.getReducer(),
   counter: s => s // it only has to passthrough the state
 });
 */
 
 export const adapterReducer = combineSomeReducer({
-  books: booksReducer,
-  authors: authorsReducer,
-  thumbnails: thumbnailsReducer
+  books: booksApiAdapter.getReducer(),
+  authors: authorsApiAdapter.getReducer(),
+  thumbnails: thumbnailsApiAdapter.getReducer()
 });
 
 export const reducer = reduceReducers(initialState, counterReducer, adapterReducer);

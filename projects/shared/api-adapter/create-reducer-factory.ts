@@ -18,7 +18,7 @@ export function createReducerFactory<T extends string, TData>(type: T, defaultVa
 
       on(load, (state) => ({
         ...state,
-          status: Status.Submitting
+        status: Status.Submitting
       })),
 
       on(loadSuccess, (state, { data }) => ({
