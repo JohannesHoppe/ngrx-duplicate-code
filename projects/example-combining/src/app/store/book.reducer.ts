@@ -15,15 +15,15 @@ export enum Status {
 export interface State {
   books: Book[];
   booksStatus: Status;
-  booksError: HttpErrorResponse;
+  booksError: HttpErrorResponse | undefined;
 
   authors: string[];
   authorsStatus: Status;
-  authorsError: HttpErrorResponse;
+  authorsError: HttpErrorResponse| undefined;
 
   thumbnails: string[];
   thumbnailsStatus: Status;
-  thumbnailsError: HttpErrorResponse;
+  thumbnailsError: HttpErrorResponse | undefined;
 }
 
 export const initialState: State = {
@@ -59,7 +59,7 @@ export const reducer = createReducer(
     ...state,
 
     ...(type === BookActions.loadBooksSuccess.type ? {
-      books: data,
+      books: data as Book[], // unfortunately, we to cast here since data might be Book[] OR string[] 😞
       booksStatus: Status.Successful,
       booksError: undefined
     } : {}),
@@ -67,15 +67,15 @@ export const reducer = createReducer(
     // still some kind of second duplication 🤨
 
     ...(type === BookActions.loadAuthorsSuccess.type ? {
-      authors: data,
+      authors: data as string[], // cast 😞
       authorsStatus: Status.Successful,
       authorsError: undefined
     } : {}),
 
-      // still some kind of third duplication 😞
+    // still some kind of third duplication 😞
 
     ...(type === BookActions.loadThumbnailsSuccess.type ? {
-      thumbnails: data,
+      thumbnails: data as string[], // cast 😞
       thumbnailsStatus: Status.Successful,
       thumbnailsError: undefined
     } : {})

@@ -16,15 +16,15 @@ export enum Status {
 export interface State {
   books: Book[];
   booksStatus: Status;
-  booksError: HttpErrorResponse;
+  booksError: HttpErrorResponse | undefined;
 
   authors: string[];
   authorsStatus: Status;
-  authorsError: HttpErrorResponse;
+  authorsError: HttpErrorResponse | undefined;
 
   thumbnails: string[];
   thumbnailsStatus: Status;
-  thumbnailsError: HttpErrorResponse;
+  thumbnailsError: HttpErrorResponse | undefined;
 }
 
 export const initialState: State = {
@@ -56,19 +56,19 @@ export const reducer = createReducer(
     ...state,
 
     ...(kind === 'books' ? {
-      books: data,
+      books: data as Book[], // unfortunately, we to cast here since data might be Book[] OR string[] 😞
       booksStatus: Status.Successful,
       booksError: undefined
     } : {}),
 
     ...(kind === 'authors' ? {
-      authors: data,
+      authors: data as string[], // cast 😞
       authorsStatus: Status.Successful,
       authorsError: undefined
     } : {}),
 
     ...(kind === 'thumbnails' ? {
-      thumbnails: data,
+      thumbnails: data as string[], // cast 😞
       thumbnailsStatus: Status.Successful,
       thumbnailsError: undefined
     } : {})

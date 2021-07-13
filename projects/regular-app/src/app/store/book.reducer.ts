@@ -15,15 +15,15 @@ export enum Status {
 export interface State {
   books: Book[];
   booksStatus: Status;
-  booksError: HttpErrorResponse;
+  booksError: HttpErrorResponse | undefined;
 
   authors: string[];
   authorsStatus: Status;
-  authorsError: HttpErrorResponse;
+  authorsError: HttpErrorResponse | undefined;
 
   thumbnails: string[];
   thumbnailsStatus: Status;
-  thumbnailsError: HttpErrorResponse;
+  thumbnailsError: HttpErrorResponse | undefined;
 }
 
 export const initialState: State = {

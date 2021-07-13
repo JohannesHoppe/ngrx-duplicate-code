@@ -11,7 +11,7 @@ export enum Status {
 export interface SubmittableItem<TData> {
   data: TData;
   status: Status;
-  error: HttpErrorResponse;
+  error: HttpErrorResponse | undefined;
 }
 
 export function createInitialStateFactory<TData>(initialValueOfT: TData) {

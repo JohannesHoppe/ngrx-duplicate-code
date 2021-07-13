@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core';
 export class ShowErrorComponent {
 
   @Input()
-  error: HttpErrorResponse;
+  error: HttpErrorResponse | undefined | null = null;
 }

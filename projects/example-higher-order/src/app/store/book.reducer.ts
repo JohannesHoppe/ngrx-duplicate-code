@@ -14,9 +14,9 @@ export const thumbnailsReducer = thumbnailsApiAdapter.getReducer();
 
 
 export interface State {
-  books: SubmittableItem<Book[]>;
-  authors: SubmittableItem<string[]>;
-  thumbnails: SubmittableItem<string[]>;
+  books: SubmittableItem<Book[]> | undefined;
+  authors: SubmittableItem<string[]> | undefined;
+  thumbnails: SubmittableItem<string[]> | undefined;
   counter: number;
 }
 
