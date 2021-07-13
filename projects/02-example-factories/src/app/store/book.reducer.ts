@@ -1,104 +1,39 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { createReducer, on } from '@ngrx/store';
-import { Status } from 'projects/shared/status';
+import { combineReducers, createReducer, on } from '@ngrx/store';
+import { SubmittableItem } from 'projects/shared/api-adapter';
+import { Book } from 'projects/shared/book';
 
-import { Book } from '../../../../shared/book';
 import * as BookActions from './book.actions';
+import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 
 
 export const bookFeatureKey = 'book';
 
+
 export interface State {
-  books: Book[];
-  booksStatus: Status;
-  booksError: HttpErrorResponse | undefined;
-
-  authors: string[];
-  authorsStatus: Status;
-  authorsError: HttpErrorResponse | undefined;
-
-  thumbnails: string[];
-  thumbnailsStatus: Status;
-  thumbnailsError: HttpErrorResponse | undefined;
+  books: SubmittableItem<Book[]> | undefined;
+  authors: SubmittableItem<string[]> | undefined;
+  thumbnails: SubmittableItem<string[]> | undefined;
+  counter: number;
 }
 
 export const initialState: State = {
-  books: [],
-  booksStatus: Status.NotSubmitted,
-  booksError: undefined,
-
-  authors: [],
-  authorsStatus: Status.NotSubmitted,
-  authorsError: undefined,
-
-  thumbnails: [],
-  thumbnailsStatus: Status.NotSubmitted,
-  thumbnailsError: undefined,
+  books: undefined,
+  authors: undefined,
+  thumbnails: undefined,
+  counter: 1
 };
 
+// counter: regular reducer for demonstration
+const counterReducer = createReducer(
+  initialState.counter,
 
-export const reducer = createReducer(
-  initialState,
-
-  on(BookActions.loadBooks, state => ({
-    ...state,
-    booksStatus: Status.Submitting,
-  })),
-
-  on(BookActions.loadBooksSuccess, (state, { data: books }) => ({
-    ...state,
-    books,
-    booksStatus: Status.Successful,
-    booksError: undefined
-  })),
-
-  on(BookActions.loadBooksFailure, (state, { error: booksError }) => ({
-    ...state,
-    books: [],
-    booksStatus: Status.Failure,
-    booksError
-  })),
-
-  // second duplication 🤨
-
-  on(BookActions.loadAuthors, state => ({
-    ...state,
-    authorsStatus: Status.Submitting,
-  })),
-
-  on(BookActions.loadAuthorsSuccess, (state, { data: authors }) => ({
-    ...state,
-    authors,
-    authorsStatus: Status.Successful,
-    authorsError: undefined
-  })),
-
-  on(BookActions.loadAuthorsFailure, (state, { error: authorsError }) => ({
-    ...state,
-    authors: [],
-    authorsStatus: Status.Failure,
-    authorsError
-  })),
-
-  // third duplication 😞
-
-  on(BookActions.loadThumbnails, state => ({
-    ...state,
-    thumbnailsStatus: Status.Submitting,
-  })),
-
-  on(BookActions.loadThumbnailsSuccess, (state, { data: thumbnails }) => ({
-    ...state,
-    thumbnails,
-    thumbnailsStatus: Status.Successful,
-    thumbnailsError: undefined
-  })),
-
-  on(BookActions.loadThumbnailsFailure, (state, { error: thumbnailsError }) => ({
-    ...state,
-    thumbnails: [],
-    thumbnailsStatus: Status.Failure,
-    thumbnailsError
-  }))
+  on(BookActions.incrementCounter, state => state + 1),
+  on(BookActions.decrementCounter, state => state - 1),
 );
 
+export const reducer = combineReducers({
+  books: booksApiAdapter.getReducer(),
+  authors: authorsApiAdapter.getReducer(),
+  thumbnails: thumbnailsApiAdapter.getReducer(),
+  counter: counterReducer
+}, initialState);

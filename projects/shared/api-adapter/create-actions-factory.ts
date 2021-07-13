@@ -2,8 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 
 
-export const SUFFIX_SUCCESS = ' Success';
-export const SUFFIX_FAILURE = ' Failure';
+export const SUFFIX_SUCCESS = 'Success';
+export const SUFFIX_FAILURE = 'Failure';
+
+
+export function addSuffix<T extends string, TSuffix extends string>(type: T, suffix: TSuffix) {
+  return type + ' ' + suffix as `${T} ${TSuffix}`
+}
+
 
 export function typeSuccess<T extends string>(type: T) {
   return type + SUFFIX_SUCCESS;

@@ -1,0 +1,63 @@
+// not (yet?) working
+// see https://twitter.com/MikeRyanDev/status/1307687779195854849
+
+type V = string | number | boolean | bigint;
+
+type Split<S extends string, D extends string> =
+    string extends S ? string[] :
+    S extends `${infer T}${D}${infer U}` ? [T, ...Split<U, D>] :
+    [S];
+type Join<T extends V[], D extends string> =
+    T extends [] ? '' :
+    T extends [unknown] ? `${T[0]}` :
+    T extends [unknown, ...infer U] ? `${T[0]}${D}${Join<U, D>}` :
+    string;
+
+type FormatCapitalize<T extends V[]> =
+    T extends [] ? [] :
+    T extends [unknown] ? [`${capitalize T[0]}`] :
+    T extends [unknown, ...infer U] ? [`${capitalize T[0]}`, ...FormatCapitalize<U & V[]>] :
+    [];
+
+type FormatCamelCase<T extends V[]> =
+    T extends [] ? [] :
+    T extends [unknown] ? [`${lowercase T[0]}`] :
+    T extends [unknown, ...infer U] ? [`${lowercase T[0]}`, ...FormatCapitalize<U & V[]>] :
+    [];
+
+type TitleToCamel<T> = { [P in keyof T & string as Join<FormatCamelCase<Split<P, " ">>, "">]: T[P] };
+
+type ActionType<Group extends string, Action> = Action extends string ? `[${Group}] ${Action}` : never;
+
+type ActionFactory<Type extends string, V extends Function> = V extends (...args: infer Args) => infer ReturnType ? ((...args: Args) => ReturnType & { type: Type }) & { type: Type } : never;
+
+type ActionGroup<GroupName extends string, Factories extends { [type: string]: Function }> = {
+  [T in keyof Factories]: ActionFactory<ActionType<GroupName, T>, Factories[T]>
+}
+
+function props<V extends object>(): (props: V) => V {
+  return (props: V) => props;
+}
+
+export function createActionGroup<T extends string, V extends { [type: string]: Function }>(
+  groupName: T,
+  factories: V
+): TitleToCamel<ActionGroup<T, V>> {
+  return {} as any;
+}
+
+/**
+ * EXAMPLE
+ */
+
+const AuthActions = createActionGroup('Auth API', {
+  'Login Success': props<{ user: any }>(),
+  'Login Failure': props<{ error: Error }>(),
+  'Logout Success': () => {},
+  'Logout Failure': (error: Error) => ({ error }),
+})
+
+const a = AuthActions.loginSuccess({ user: { name: 'Mike' }});
+const b = AuthActions.loginFailure({ error: new Error() });
+const c = AuthActions.logoutSuccess()
+const d = AuthActions.logoutFailure(new Error());

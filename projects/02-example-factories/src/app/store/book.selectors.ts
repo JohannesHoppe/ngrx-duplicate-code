@@ -1,5 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 import * as fromBook from './book.reducer';
+
 
 export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
@@ -7,49 +10,26 @@ export const selectBookState = createFeatureSelector<fromBook.State>(
 
 export const selectBooks = createSelector(
   selectBookState,
-  (booksState: fromBook.State) => booksState.books
+  state => state.books
 );
-
-export const selectBooksStatus = createSelector(
-  selectBookState,
-  (booksState: fromBook.State) => booksState.booksStatus
-);
-
-export const selectBooksError = createSelector(
-  selectBookState,
-  (booksState: fromBook.State) => booksState.booksError
-);
-
-// second duplication 🤨
 
 export const selectAuthors = createSelector(
   selectBookState,
-  authorsState => authorsState.authors
+  state => state.authors
 );
-
-export const selectAuthorsStatus = createSelector(
-  selectBookState,
-  authorsState => authorsState.authorsStatus
-);
-
-export const selectAuthorsError = createSelector(
-  selectBookState,
-  authorsState => authorsState.authorsError
-);
-
-// third duplication 😞
 
 export const selectThumbnails = createSelector(
   selectBookState,
-  thumbnailsState => thumbnailsState.thumbnails
+  state => state.thumbnails
 );
 
-export const selectThumbnailsStatus = createSelector(
-  selectBookState,
-  thumbnailsState => thumbnailsState.thumbnailsStatus
-);
+export const booksSelectors = booksApiAdapter.getSelectors(selectBooks);
+export const authorsSelectors = authorsApiAdapter.getSelectors(selectAuthors);
+export const thumbnailsSelectors = thumbnailsApiAdapter.getSelectors(selectThumbnails);
 
-export const selectThumbnailsError = createSelector(
+
+// counter: regular selector for demonstration
+export const selectCounter = createSelector(
   selectBookState,
-  thumbnailsState => thumbnailsState.booksError
+  state => state.counter
 );
