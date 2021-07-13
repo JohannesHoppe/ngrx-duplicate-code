@@ -16,8 +16,8 @@ export function createEffectFactory<T extends string, TData>(type: T) {
       return actions$.pipe(
         ofType(load),
         concatMap(() => getData().pipe(
-            map((data) => loadSuccess({ data })),
-            catchError(error => of(loadFailure({ error })))
+          map((data) => loadSuccess({ data })),
+          catchError(error => of(loadFailure({ error })))
         ))
       );
     });

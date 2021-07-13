@@ -10,15 +10,6 @@ export function addSuffix<T extends string, TSuffix extends string>(type: T, suf
   return type + ' ' + suffix as `${T} ${TSuffix}`
 }
 
-
-export function typeSuccess<T extends string>(type: T) {
-  return type + SUFFIX_SUCCESS;
-}
-
-export function typeFailure<T extends string>(type: T) {
-  return type + SUFFIX_FAILURE;
-}
-
 export function createActionsFactory<T extends string, TData>(type: T) {
 
   function getActions() {
@@ -26,12 +17,12 @@ export function createActionsFactory<T extends string, TData>(type: T) {
     const load = createAction(type);
 
     const loadSuccess = createAction(
-      typeSuccess(type),
+      addSuffix(type, SUFFIX_SUCCESS),
       props<{ data: TData }>()
     );
 
     const loadFailure = createAction(
-      typeFailure(type),
+      addSuffix(type, SUFFIX_FAILURE),
       props<{ error: HttpErrorResponse }>()
     );
 
