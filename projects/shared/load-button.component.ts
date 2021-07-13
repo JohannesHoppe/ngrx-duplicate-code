@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Status } from '../01-regular-app/src/app/store/book.reducer';
-
+import { Status } from './status';
 
 @Component({
   selector: 'app-load-button',

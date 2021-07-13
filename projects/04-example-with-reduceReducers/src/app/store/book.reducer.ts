@@ -12,21 +12,15 @@ export const bookFeatureKey = 'book';
 
 
 export interface State {
-  books: SubmittableItem<Book[]>;
-  authors: SubmittableItem<string[]>;
-  thumbnails: SubmittableItem<string[]>;
+  books: SubmittableItem<Book[]> | undefined;
+  authors: SubmittableItem<string[]> | undefined;
+  thumbnails: SubmittableItem<string[]> | undefined;
   counter: number;
 }
 
-const oneTestBook = {
-  data: [{ isbn: '0', title: 'Test Book', description: '', firstThumbnailUrl: '', rating: 5}],
-  status: Status.Successful,
-  error: undefined,
-};
-
 export const initialState: State = {
-  books: oneTestBook,
-  authors: undefined, // this would also work: authorsApiAdapter.getInitialState() -- but reducers define there initial state on their own
+  books: undefined,
+  authors: undefined,
   thumbnails: undefined,
   counter: 1
 };

@@ -1,12 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { Status } from '../status';
+export { Status } from '../status';
 
-export enum Status {
-  NotSubmitted,
-  Submitting,
-  Successful,
-  Failure
-}
 
 export interface SubmittableItem<TData> {
   data: TData;

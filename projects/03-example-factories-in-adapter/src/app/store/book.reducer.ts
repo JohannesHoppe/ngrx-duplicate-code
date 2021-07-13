@@ -8,10 +8,6 @@ import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book
 
 export const bookFeatureKey = 'book';
 
-export const booksReducer = booksApiAdapter.getReducer();
-export const authorsReducer = authorsApiAdapter.getReducer();
-export const thumbnailsReducer = thumbnailsApiAdapter.getReducer();
-
 
 export interface State {
   books: SubmittableItem<Book[]> | undefined;
@@ -36,8 +32,8 @@ const counterReducer = createReducer(
 );
 
 export const reducer = combineReducers({
-  books: booksReducer,
-  authors: authorsReducer,
-  thumbnails: thumbnailsReducer,
+  books: booksApiAdapter.getReducer(),
+  authors: authorsApiAdapter.getReducer(),
+  thumbnails: thumbnailsApiAdapter.getReducer(),
   counter: counterReducer
 }, initialState);

@@ -1,16 +1,12 @@
-import { createReducer, on } from '@ngrx/store';
-import * as BookActions from './book.actions';
-import { Book } from '../../../../shared/book';
 import { HttpErrorResponse } from '@angular/common/http';
+import { createReducer, on } from '@ngrx/store';
+import { Status } from 'projects/shared/status';
+
+import { Book } from '../../../../shared/book';
+import * as BookActions from './book.actions';
+
 
 export const bookFeatureKey = 'book';
-
-export enum Status {
-  NotSubmitted,
-  Submitting,
-  Successful,
-  Failure
-}
 
 export interface State {
   books: Book[];
