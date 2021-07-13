@@ -1,7 +1,6 @@
 import { Action, ActionReducer, ActionReducerMap, combineReducers } from '@ngrx/store';
 
 
-// TODO: check if a similar function exists in NgRx!!
 export function combineSomeReducer<T, V extends Action = Action>(
   reducers: ActionReducerMap<T, V>, initialState?: Partial<T>): ActionReducer<T, V> {
 
@@ -12,7 +11,11 @@ export function combineSomeReducer<T, V extends Action = Action>(
 
       const newState = combinedReducer(state, action);
 
-      // TODO: investigate if we should avoid identical copies here
+      // nothing has changed
+      if (newState === state) {
+        return state;
+      }
+
       return {
         ...state,
         ...newState
