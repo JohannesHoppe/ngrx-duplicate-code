@@ -3,27 +3,27 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "regular-app": {
+    "01-regular-app": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/regular-app",
-      "sourceRoot": "projects/regular-app/src",
+      "root": "projects/01-regular-app",
+      "sourceRoot": "projects/01-regular-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/regular-app",
-            "index": "projects/regular-app/src/index.html",
-            "main": "projects/regular-app/src/main.ts",
-            "polyfills": "projects/regular-app/src/polyfills.ts",
-            "tsConfig": "projects/regular-app/tsconfig.app.json",
+            "outputPath": "dist/01-regular-app",
+            "index": "projects/01-regular-app/src/index.html",
+            "main": "projects/01-regular-app/src/main.ts",
+            "polyfills": "projects/01-regular-app/src/polyfills.ts",
+            "tsConfig": "projects/01-regular-app/tsconfig.app.json",
             "assets": [
-              "projects/regular-app/src/favicon.ico",
-              "projects/regular-app/src/assets"
+              "projects/01-regular-app/src/favicon.ico",
+              "projects/01-regular-app/src/assets"
             ],
             "styles": [
-              "projects/regular-app/src/styles.scss"
+              "projects/01-regular-app/src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -37,8 +37,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/regular-app/src/environments/environment.ts",
-                  "with": "projects/regular-app/src/environments/environment.prod.ts"
+                  "replace": "projects/01-regular-app/src/environments/environment.ts",
+                  "with": "projects/01-regular-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -67,27 +67,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "regular-app:build"
+            "browserTarget": "01-regular-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "regular-app:build:production"
+              "browserTarget": "01-regular-app:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/regular-app/src/test.ts",
-            "polyfills": "projects/regular-app/src/polyfills.ts",
-            "tsConfig": "projects/regular-app/tsconfig.spec.json",
-            "karmaConfig": "projects/regular-app/karma.conf.js",
+            "main": "projects/01-regular-app/src/test.ts",
+            "polyfills": "projects/01-regular-app/src/polyfills.ts",
+            "tsConfig": "projects/01-regular-app/tsconfig.spec.json",
+            "karmaConfig": "projects/01-regular-app/karma.conf.js",
             "assets": [
-              "projects/regular-app/src/favicon.ico",
-              "projects/regular-app/src/assets"
+              "projects/01-regular-app/src/favicon.ico",
+              "projects/01-regular-app/src/assets"
             ],
             "styles": [
-              "projects/regular-app/src/styles.scss"
+              "projects/01-regular-app/src/styles.scss"
             ],
             "scripts": []
           }
@@ -96,8 +96,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/regular-app/tsconfig.app.json",
-              "projects/regular-app/tsconfig.spec.json"
+              "projects/01-regular-app/tsconfig.app.json",
+              "projects/01-regular-app/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -106,27 +106,27 @@
         }
       }
     },
-    "example-action-subtyping": {
+    "02-example-factories": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/example-action-subtyping",
-      "sourceRoot": "projects/example-action-subtyping/src",
+      "root": "projects/02-example-factories",
+      "sourceRoot": "projects/02-example-factories/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/example-action-subtyping",
-            "index": "projects/example-action-subtyping/src/index.html",
-            "main": "projects/example-action-subtyping/src/main.ts",
-            "polyfills": "projects/example-action-subtyping/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping/tsconfig.app.json",
+            "outputPath": "dist/02-example-factories",
+            "index": "projects/02-example-factories/src/index.html",
+            "main": "projects/02-example-factories/src/main.ts",
+            "polyfills": "projects/02-example-factories/src/polyfills.ts",
+            "tsConfig": "projects/02-example-factories/tsconfig.app.json",
             "assets": [
-              "projects/example-action-subtyping/src/favicon.ico",
-              "projects/example-action-subtyping/src/assets"
+              "projects/02-example-factories/src/favicon.ico",
+              "projects/02-example-factories/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping/src/styles.scss"
+              "projects/02-example-factories/src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -140,8 +140,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/example-action-subtyping/src/environments/environment.ts",
-                  "with": "projects/example-action-subtyping/src/environments/environment.prod.ts"
+                  "replace": "projects/02-example-factories/src/environments/environment.ts",
+                  "with": "projects/02-example-factories/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -170,27 +170,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "example-action-subtyping:build"
+            "browserTarget": "02-example-factories:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-action-subtyping:build:production"
+              "browserTarget": "02-example-factories:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/example-action-subtyping/src/test.ts",
-            "polyfills": "projects/example-action-subtyping/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping/tsconfig.spec.json",
-            "karmaConfig": "projects/example-action-subtyping/karma.conf.js",
+            "main": "projects/02-example-factories/src/test.ts",
+            "polyfills": "projects/02-example-factories/src/polyfills.ts",
+            "tsConfig": "projects/02-example-factories/tsconfig.spec.json",
+            "karmaConfig": "projects/02-example-factories/karma.conf.js",
             "assets": [
-              "projects/example-action-subtyping/src/favicon.ico",
-              "projects/example-action-subtyping/src/assets"
+              "projects/02-example-factories/src/favicon.ico",
+              "projects/02-example-factories/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping/src/styles.scss"
+              "projects/02-example-factories/src/styles.scss"
             ],
             "scripts": []
           }
@@ -199,8 +199,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/example-action-subtyping/tsconfig.app.json",
-              "projects/example-action-subtyping/tsconfig.spec.json"
+              "projects/02-example-factories/tsconfig.app.json",
+              "projects/02-example-factories/tsconfig.spec.json",
+              "projects/02-example-factories/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -209,27 +210,27 @@
         }
       }
     },
-    "example-combining": {
+    "03-example-factories-in-adapter": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/example-combining",
-      "sourceRoot": "projects/example-combining/src",
+      "root": "projects/03-example-factories-in-adapter",
+      "sourceRoot": "projects/03-example-factories-in-adapter/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/example-combining",
-            "index": "projects/example-combining/src/index.html",
-            "main": "projects/example-combining/src/main.ts",
-            "polyfills": "projects/example-combining/src/polyfills.ts",
-            "tsConfig": "projects/example-combining/tsconfig.app.json",
+            "outputPath": "dist/03-example-factories-in-adapter",
+            "index": "projects/03-example-factories-in-adapter/src/index.html",
+            "main": "projects/03-example-factories-in-adapter/src/main.ts",
+            "polyfills": "projects/03-example-factories-in-adapter/src/polyfills.ts",
+            "tsConfig": "projects/03-example-factories-in-adapter/tsconfig.app.json",
             "assets": [
-              "projects/example-combining/src/favicon.ico",
-              "projects/example-combining/src/assets"
+              "projects/03-example-factories-in-adapter/src/favicon.ico",
+              "projects/03-example-factories-in-adapter/src/assets"
             ],
             "styles": [
-              "projects/example-combining/src/styles.scss"
+              "projects/03-example-factories-in-adapter/src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -243,8 +244,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/example-combining/src/environments/environment.ts",
-                  "with": "projects/example-combining/src/environments/environment.prod.ts"
+                  "replace": "projects/03-example-factories-in-adapter/src/environments/environment.ts",
+                  "with": "projects/03-example-factories-in-adapter/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -273,27 +274,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "example-combining:build"
+            "browserTarget": "03-example-factories-in-adapter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-combining:build:production"
+              "browserTarget": "03-example-factories-in-adapter:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/example-combining/src/test.ts",
-            "polyfills": "projects/example-combining/src/polyfills.ts",
-            "tsConfig": "projects/example-combining/tsconfig.spec.json",
-            "karmaConfig": "projects/example-combining/karma.conf.js",
+            "main": "projects/03-example-factories-in-adapter/src/test.ts",
+            "polyfills": "projects/03-example-factories-in-adapter/src/polyfills.ts",
+            "tsConfig": "projects/03-example-factories-in-adapter/tsconfig.spec.json",
+            "karmaConfig": "projects/03-example-factories-in-adapter/karma.conf.js",
             "assets": [
-              "projects/example-combining/src/favicon.ico",
-              "projects/example-combining/src/assets"
+              "projects/03-example-factories-in-adapter/src/favicon.ico",
+              "projects/03-example-factories-in-adapter/src/assets"
             ],
             "styles": [
-              "projects/example-combining/src/styles.scss"
+              "projects/03-example-factories-in-adapter/src/styles.scss"
             ],
             "scripts": []
           }
@@ -302,9 +303,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/example-combining/tsconfig.app.json",
-              "projects/example-combining/tsconfig.spec.json",
-              "projects/example-combining/e2e/tsconfig.json"
+              "projects/03-example-factories-in-adapter/tsconfig.app.json",
+              "projects/03-example-factories-in-adapter/tsconfig.spec.json",
+              "projects/03-example-factories-in-adapter/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -313,27 +314,27 @@
         }
       }
     },
-    "example-action-subtyping-nested": {
+    "04-example-with-reduceReducers": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/example-action-subtyping-nested",
-      "sourceRoot": "projects/example-action-subtyping-nested/src",
+      "root": "projects/04-example-with-reduceReducers",
+      "sourceRoot": "projects/04-example-with-reduceReducers/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/example-action-subtyping-nested",
-            "index": "projects/example-action-subtyping-nested/src/index.html",
-            "main": "projects/example-action-subtyping-nested/src/main.ts",
-            "polyfills": "projects/example-action-subtyping-nested/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping-nested/tsconfig.app.json",
+            "outputPath": "dist/04-example-with-reduceReducers",
+            "index": "projects/04-example-with-reduceReducers/src/index.html",
+            "main": "projects/04-example-with-reduceReducers/src/main.ts",
+            "polyfills": "projects/04-example-with-reduceReducers/src/polyfills.ts",
+            "tsConfig": "projects/04-example-with-reduceReducers/tsconfig.app.json",
             "assets": [
-              "projects/example-action-subtyping-nested/src/favicon.ico",
-              "projects/example-action-subtyping-nested/src/assets"
+              "projects/04-example-with-reduceReducers/src/favicon.ico",
+              "projects/04-example-with-reduceReducers/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping-nested/src/styles.scss"
+              "projects/04-example-with-reduceReducers/src/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -347,8 +348,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/example-action-subtyping-nested/src/environments/environment.ts",
-                  "with": "projects/example-action-subtyping-nested/src/environments/environment.prod.ts"
+                  "replace": "projects/04-example-with-reduceReducers/src/environments/environment.ts",
+                  "with": "projects/04-example-with-reduceReducers/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -377,27 +378,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "example-action-subtyping-nested:build"
+            "browserTarget": "04-example-with-reduceReducers:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-action-subtyping-nested:build:production"
+              "browserTarget": "04-example-with-reduceReducers:build:production"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/example-action-subtyping-nested/src/test.ts",
-            "polyfills": "projects/example-action-subtyping-nested/src/polyfills.ts",
-            "tsConfig": "projects/example-action-subtyping-nested/tsconfig.spec.json",
-            "karmaConfig": "projects/example-action-subtyping-nested/karma.conf.js",
+            "main": "projects/04-example-with-reduceReducers/src/test.ts",
+            "polyfills": "projects/04-example-with-reduceReducers/src/polyfills.ts",
+            "tsConfig": "projects/04-example-with-reduceReducers/tsconfig.spec.json",
+            "karmaConfig": "projects/04-example-with-reduceReducers/karma.conf.js",
             "assets": [
-              "projects/example-action-subtyping-nested/src/favicon.ico",
-              "projects/example-action-subtyping-nested/src/assets"
+              "projects/04-example-with-reduceReducers/src/favicon.ico",
+              "projects/04-example-with-reduceReducers/src/assets"
             ],
             "styles": [
-              "projects/example-action-subtyping-nested/src/styles.scss"
+              "projects/04-example-with-reduceReducers/src/styles.scss"
             ],
             "scripts": []
           }
@@ -406,217 +407,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/example-action-subtyping-nested/tsconfig.app.json",
-              "projects/example-action-subtyping-nested/tsconfig.spec.json",
-              "projects/example-action-subtyping-nested/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "example-higher-order": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "projects/example-higher-order",
-      "sourceRoot": "projects/example-higher-order/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/example-higher-order",
-            "index": "projects/example-higher-order/src/index.html",
-            "main": "projects/example-higher-order/src/main.ts",
-            "polyfills": "projects/example-higher-order/src/polyfills.ts",
-            "tsConfig": "projects/example-higher-order/tsconfig.app.json",
-            "assets": [
-              "projects/example-higher-order/src/favicon.ico",
-              "projects/example-higher-order/src/assets"
-            ],
-            "styles": [
-              "projects/example-higher-order/src/styles.scss"
-            ],
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/example-higher-order/src/environments/environment.ts",
-                  "with": "projects/example-higher-order/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          },
-          "defaultConfiguration": ""
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "example-higher-order:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "example-higher-order:build:production"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/example-higher-order/src/test.ts",
-            "polyfills": "projects/example-higher-order/src/polyfills.ts",
-            "tsConfig": "projects/example-higher-order/tsconfig.spec.json",
-            "karmaConfig": "projects/example-higher-order/karma.conf.js",
-            "assets": [
-              "projects/example-higher-order/src/favicon.ico",
-              "projects/example-higher-order/src/assets"
-            ],
-            "styles": [
-              "projects/example-higher-order/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/example-higher-order/tsconfig.app.json",
-              "projects/example-higher-order/tsconfig.spec.json",
-              "projects/example-higher-order/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "example-higher-order2": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "projects/example-higher-order2",
-      "sourceRoot": "projects/example-higher-order2/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/example-higher-order2",
-            "index": "projects/example-higher-order2/src/index.html",
-            "main": "projects/example-higher-order2/src/main.ts",
-            "polyfills": "projects/example-higher-order2/src/polyfills.ts",
-            "tsConfig": "projects/example-higher-order2/tsconfig.app.json",
-            "assets": [
-              "projects/example-higher-order2/src/favicon.ico",
-              "projects/example-higher-order2/src/assets"
-            ],
-            "styles": [
-              "projects/example-higher-order2/src/styles.scss"
-            ],
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/example-higher-order2/src/environments/environment.ts",
-                  "with": "projects/example-higher-order2/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          },
-          "defaultConfiguration": ""
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "example-higher-order2:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "example-higher-order2:build:production"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/example-higher-order2/src/test.ts",
-            "polyfills": "projects/example-higher-order2/src/polyfills.ts",
-            "tsConfig": "projects/example-higher-order2/tsconfig.spec.json",
-            "karmaConfig": "projects/example-higher-order2/karma.conf.js",
-            "assets": [
-              "projects/example-higher-order2/src/favicon.ico",
-              "projects/example-higher-order2/src/assets"
-            ],
-            "styles": [
-              "projects/example-higher-order2/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/example-higher-order2/tsconfig.app.json",
-              "projects/example-higher-order2/tsconfig.spec.json",
-              "projects/example-higher-order2/e2e/tsconfig.json"
+              "projects/04-example-with-reduceReducers/tsconfig.app.json",
+              "projects/04-example-with-reduceReducers/tsconfig.spec.json",
+              "projects/04-example-with-reduceReducers/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -626,7 +419,7 @@
       }
     }
   },
-  "defaultProject": "regular-app",
+  "defaultProject": "01-regular-app",
   "cli": {
     "defaultCollection": "@ngrx/schematics"
   }

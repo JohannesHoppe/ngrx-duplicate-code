@@ -3,21 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
-    "start:example1": "ng serve --project=example-combining --port=4201 --open",
-    "start:example2": "ng serve --project=example-action-subtyping --port=4202 --open",
-    "start:example3": "ng serve --project=example-action-subtyping-nested --port=4203 --open",
-    "start:example4": "ng serve --project=example-higher-order --port=4204 --open",
-    "start:example5": "ng serve --project=example-higher-order2 --port=4205 --open",
 
-    "build:example1": "ng build --project=example-combining",
-    "build:example2": "ng build --project=example-action-subtyping",
-    "build:example3": "ng build --project=example-action-subtyping-nested",
-    "build:example4": "ng build --project=example-higher-order",
-    "build:example5": "ng build --project=example-higher-order2",
+    "start": "ng serve --open",
+    "start:example2": "ng serve --project=02-example-factories --port=4201 --open",
+    "start:example3": "ng serve --project=03-example-factories-in-adapter --port=4202 --open",
+    "start:example4": "ng serve --project=04-example-with-reduceReducers --port=4203 --open",
 
     "build": "ng build",
-    "build:all": "npm run build:example1 && npm run build:example2 && npm run build:example3 && npm run build:example4 && npm run build:example5",
+    "build:example2": "ng build --project=02-example-factories",
+    "build:example3": "ng build --project=03-example-factories-in-adapter",
+    "build:example4": "ng build --project=04-example-with-reduceReducers",
+
+    "build:all": "npm run build && npm run build:example1 && npm run build:example2 && npm run build:example3 && npm run build:example4",
     "test": "ng test",
     "lint": "ng lint"
   },
