@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import reduceReducers from 'reduce-reducers';
+import { Action, ActionReducer } from '@ngrx/store';
 
 import { SubmittableItem, Status, combineSomeReducer } from 'projects/shared/api-adapter';
 import { Book } from 'projects/shared/book';
@@ -51,9 +52,10 @@ export const adapterReducer = combineReducers({
 */
 
 export const adapterReducer = combineSomeReducer({
-  books: booksApiAdapter.getReducer(),
-  authors: authorsApiAdapter.getReducer(),
-  thumbnails: thumbnailsApiAdapter.getReducer()
-});
+  books: booksApiAdapter.getReducer() as any,
+  authors: authorsApiAdapter.getReducer() as any,
+  thumbnails: thumbnailsApiAdapter.getReducer() as any
+  // no counter here!
+}) as unknown as ActionReducer<State, Action>; // counter is indeed missing, so we have to force the type here
 
 export const reducer = reduceReducers(initialState, counterReducer, adapterReducer);
