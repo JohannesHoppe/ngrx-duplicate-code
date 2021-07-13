@@ -6,7 +6,7 @@ import { SubmittableItem } from './create-initial-state-factory';
 export function createSelectorsFactory<TData>() {
 
   function getSelectors(selectBooks:
-    MemoizedSelector<object, SubmittableItem<TData> | undefined, DefaultProjectorFn<SubmittableItem<TData> | undefined>>) {
+    MemoizedSelector<object, SubmittableItem<TData>, DefaultProjectorFn<SubmittableItem<TData>>>) {
 
     const selectItems = createSelector(
       selectBooks,

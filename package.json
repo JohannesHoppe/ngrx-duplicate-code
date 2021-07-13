@@ -3,16 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-
-    "start": "ng serve --open",
-    "start:example2": "ng serve --project=02-example-factories --port=4201 --open",
+    "start:example1": "ng serve --open",
+    "start:example2": "ng serve --project=02-example-factories --port=4202 --open",
     "start:example3": "ng serve --project=03-example-with-reduceReducers --port=4203 --open",
-
-    "build": "ng build",
+    "start-all": "npm-run-all --parallel start:*",
+    "build:example1": "ng build",
     "build:example2": "ng build --project=02-example-factories",
     "build:example3": "ng build --project=03-example-with-reduceReducers",
-
-    "build:all": "npm run build && npm run build:example1 && npm run build:example2 && npm run build:example3",
+    "build-all": "npm-run-all --parallel build:*",
     "test": "ng test",
     "lint": "ng lint"
   },
@@ -31,6 +29,7 @@
     "@ngrx/store": "^12.2.0",
     "@ngrx/store-devtools": "^12.2.0",
     "bootstrap": "^4.4.1",
+    "ngrx-child-selectors": "^12.0.0",
     "reduce-reducers": "^1.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
@@ -41,9 +40,9 @@
     "@angular/cli": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.1.1",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -52,6 +51,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

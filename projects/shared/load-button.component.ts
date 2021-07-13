@@ -19,6 +19,6 @@ export class LoadButtonComponent {
   btnClick = new EventEmitter();
 
   @Input()
-  status: Status | undefined | null = Status.NotSubmitted;
+  status: Status | null = Status.NotSubmitted;
 
 }

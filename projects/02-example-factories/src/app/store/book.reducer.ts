@@ -10,16 +10,16 @@ export const bookFeatureKey = 'book';
 
 
 export interface State {
-  books: SubmittableItem<Book[]> | undefined;
-  authors: SubmittableItem<string[]> | undefined;
-  thumbnails: SubmittableItem<string[]> | undefined;
+  books: SubmittableItem<Book[]>;
+  authors: SubmittableItem<string[]>;
+  thumbnails: SubmittableItem<string[]>;
   counter: number;
 }
 
 export const initialState: State = {
-  books: undefined,
-  authors: undefined,
-  thumbnails: undefined,
+  books: booksApiAdapter.getInitialState(),
+  authors: authorsApiAdapter.getInitialState(),
+  thumbnails: thumbnailsApiAdapter.getInitialState(),
   counter: 1
 };
 
@@ -27,6 +27,8 @@ export const initialState: State = {
 const counterReducer = createReducer(
   initialState.counter,
 
+  // this is not how it is normally done,
+  // one would probably expect `state.counter`, see next demo!
   on(BookActions.incrementCounter, state => state + 1),
   on(BookActions.decrementCounter, state => state - 1),
 );

@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createChildSelectors } from 'ngrx-child-selectors';
 
 import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 import * as fromBook from './book.reducer';
@@ -8,20 +9,11 @@ export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
 );
 
-export const selectBooks = createSelector(
-  selectBookState,
-  state => state.books
-);
-
-export const selectAuthors = createSelector(
-  selectBookState,
-  state => state.authors
-);
-
-export const selectThumbnails = createSelector(
-  selectBookState,
-  state => state.thumbnails
-);
+export const {
+  selectBooks,
+  selectAuthors,
+  selectThumbnails
+} = createChildSelectors(selectBookState, fromBook.initialState);
 
 export const booksSelectors = booksApiAdapter.getSelectors(selectBooks);
 export const authorsSelectors = authorsApiAdapter.getSelectors(selectAuthors);

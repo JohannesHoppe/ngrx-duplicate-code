@@ -10,7 +10,7 @@ import * as BookActions from './store/book.actions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgRx: Higher-Order';
+  title = 'NgRx: Factories';
 
   books$ = this.store.select(BookSelectors.booksSelectors.selectItems);
   booksStatus$ = this.store.select(BookSelectors.booksSelectors.selectItemsStatus);

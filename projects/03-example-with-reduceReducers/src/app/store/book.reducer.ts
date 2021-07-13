@@ -13,16 +13,16 @@ export const bookFeatureKey = 'book';
 
 
 export interface State {
-  books: SubmittableItem<Book[]> | undefined;
-  authors: SubmittableItem<string[]> | undefined;
-  thumbnails: SubmittableItem<string[]> | undefined;
+  books: SubmittableItem<Book[]>;
+  authors: SubmittableItem<string[]>;
+  thumbnails: SubmittableItem<string[]>;
   counter: number;
 }
 
 export const initialState: State = {
-  books: undefined,
-  authors: undefined,
-  thumbnails: undefined,
+  books: booksApiAdapter.getInitialState(),
+  authors: authorsApiAdapter.getInitialState(),
+  thumbnails: thumbnailsApiAdapter.getInitialState(),
   counter: 1
 };
 
@@ -41,16 +41,17 @@ export const counterReducer = createReducer(
   })),
 );
 
-// the normal combineReducers overrides unknown properties
+// the normal `combineReducers` always overrides not defined properties
 /*
 export const adapterReducer = combineReducers({
   books: booksApiAdapter.getReducer(),
   authors: authorsApiAdapter.getReducer(),
   thumbnails: thumbnailsApiAdapter.getReducer(),
-  counter: s => s // it only has to passthrough the state
+  counter: s => s // this will be lost!
 });
 */
 
+// ... but our own `combineSomeReducer` will ignore the counter
 export const adapterReducer = combineSomeReducer({
   books: booksApiAdapter.getReducer() as any,
   authors: authorsApiAdapter.getReducer() as any,
