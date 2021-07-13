@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as BookSelectors from './store/book.selectors';
-import * as BookActions from './store/book.actions';
+
+import { authorsActions, booksActions, decrementCounter, incrementCounter, thumbnailsActions } from './store/book.actions';
+import { authorsSelectors, booksSelectors, selectCounter, thumbnailsSelectors } from './store/book.selectors';
 
 
 @Component({
@@ -12,39 +13,39 @@ import * as BookActions from './store/book.actions';
 export class AppComponent {
   title = 'NgRx: ReduceReducers';
 
-  books$ = this.store.select(BookSelectors.booksSelectors.selectItems);
-  booksStatus$ = this.store.select(BookSelectors.booksSelectors.selectItemsStatus);
-  booksError$ = this.store.select(BookSelectors.booksSelectors.selectItemsError);
+  books$ = this.store.select(booksSelectors.selectItems);
+  booksStatus$ = this.store.select(booksSelectors.selectItemsStatus);
+  booksError$ = this.store.select(booksSelectors.selectItemsError);
 
-  authors$ = this.store.select(BookSelectors.authorsSelectors.selectItems);
-  authorsStatus$ = this.store.select(BookSelectors.authorsSelectors.selectItemsStatus);
-  authorsError$ = this.store.select(BookSelectors.authorsSelectors.selectItemsError);
+  authors$ = this.store.select(authorsSelectors.selectItems);
+  authorsStatus$ = this.store.select(authorsSelectors.selectItemsStatus);
+  authorsError$ = this.store.select(authorsSelectors.selectItemsError);
 
-  thumbnails$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItems);
-  thumbnailsStatus$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsStatus);
-  thumbnailsError$ = this.store.select(BookSelectors.thumbnailsSelectors.selectItemsError);
+  thumbnails$ = this.store.select(thumbnailsSelectors.selectItems);
+  thumbnailsStatus$ = this.store.select(thumbnailsSelectors.selectItemsStatus);
+  thumbnailsError$ = this.store.select(thumbnailsSelectors.selectItemsError);
 
-  counter$ = this.store.select(BookSelectors.selectCounter);
+  counter$ = this.store.select(selectCounter);
 
   constructor(private store: Store) { }
 
   loadBooks() {
-    this.store.dispatch(BookActions.booksActions.load());
+    this.store.dispatch(booksActions.load());
   }
 
   loadAuthors() {
-    this.store.dispatch(BookActions.authorsActions.load());
+    this.store.dispatch(authorsActions.load());
   }
 
   loadThumbnails() {
-    this.store.dispatch(BookActions.thumbnailsActions.load());
+    this.store.dispatch(thumbnailsActions.load());
   }
 
   incrementCounter() {
-    this.store.dispatch(BookActions.incrementCounter());
+    this.store.dispatch(incrementCounter());
   }
 
   decrementCounter() {
-    this.store.dispatch(BookActions.decrementCounter());
+    this.store.dispatch(decrementCounter());
   }
 }

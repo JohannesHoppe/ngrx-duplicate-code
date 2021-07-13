@@ -3,7 +3,17 @@ import { createReducer, on } from '@ngrx/store';
 import { Status } from 'projects/shared/status';
 
 import { Book } from '../../../../shared/book';
-import * as BookActions from './book.actions';
+import {
+  loadAuthors,
+  loadAuthorsFailure,
+  loadAuthorsSuccess,
+  loadBooks,
+  loadBooksFailure,
+  loadBooksSuccess,
+  loadThumbnails,
+  loadThumbnailsFailure,
+  loadThumbnailsSuccess,
+} from './book.actions';
 
 
 export const bookFeatureKey = 'book';
@@ -40,19 +50,19 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(BookActions.loadBooks, state => ({
+  on(loadBooks, state => ({
     ...state,
     booksStatus: Status.Submitting,
   })),
 
-  on(BookActions.loadBooksSuccess, (state, { data: books }) => ({
+  on(loadBooksSuccess, (state, { data: books }) => ({
     ...state,
     books,
     booksStatus: Status.Successful,
     booksError: undefined
   })),
 
-  on(BookActions.loadBooksFailure, (state, { error: booksError }) => ({
+  on(loadBooksFailure, (state, { error: booksError }) => ({
     ...state,
     books: [],
     booksStatus: Status.Failure,
@@ -61,19 +71,19 @@ export const reducer = createReducer(
 
   // second duplication 🤨
 
-  on(BookActions.loadAuthors, state => ({
+  on(loadAuthors, state => ({
     ...state,
     authorsStatus: Status.Submitting,
   })),
 
-  on(BookActions.loadAuthorsSuccess, (state, { data: authors }) => ({
+  on(loadAuthorsSuccess, (state, { data: authors }) => ({
     ...state,
     authors,
     authorsStatus: Status.Successful,
     authorsError: undefined
   })),
 
-  on(BookActions.loadAuthorsFailure, (state, { error: authorsError }) => ({
+  on(loadAuthorsFailure, (state, { error: authorsError }) => ({
     ...state,
     authors: [],
     authorsStatus: Status.Failure,
@@ -82,19 +92,19 @@ export const reducer = createReducer(
 
   // third duplication 😞
 
-  on(BookActions.loadThumbnails, state => ({
+  on(loadThumbnails, state => ({
     ...state,
     thumbnailsStatus: Status.Submitting,
   })),
 
-  on(BookActions.loadThumbnailsSuccess, (state, { data: thumbnails }) => ({
+  on(loadThumbnailsSuccess, (state, { data: thumbnails }) => ({
     ...state,
     thumbnails,
     thumbnailsStatus: Status.Successful,
     thumbnailsError: undefined
   })),
 
-  on(BookActions.loadThumbnailsFailure, (state, { error: thumbnailsError }) => ({
+  on(loadThumbnailsFailure, (state, { error: thumbnailsError }) => ({
     ...state,
     thumbnails: [],
     thumbnailsStatus: Status.Failure,

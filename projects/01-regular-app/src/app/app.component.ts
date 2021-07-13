@@ -1,7 +1,18 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as BookSelectors from './store/book.selectors';
-import * as BookActions from './store/book.actions';
+
+import { loadAuthors, loadBooks, loadThumbnails } from './store/book.actions';
+import {
+  selectAuthors,
+  selectAuthorsError,
+  selectAuthorsStatus,
+  selectBooks,
+  selectBooksError,
+  selectBooksStatus,
+  selectThumbnails,
+  selectThumbnailsError,
+  selectThumbnailsStatus,
+} from './store/book.selectors';
 
 
 @Component({
@@ -12,33 +23,33 @@ import * as BookActions from './store/book.actions';
 export class AppComponent {
   title = 'NgRx: Regular App';
 
-  books$ = this.store.select(BookSelectors.selectBooks);
-  booksStatus$ = this.store.select(BookSelectors.selectBooksStatus);
-  booksError$ = this.store.select(BookSelectors.selectBooksError);
+  books$ = this.store.select(selectBooks);
+  booksStatus$ = this.store.select(selectBooksStatus);
+  booksError$ = this.store.select(selectBooksError);
 
   // second duplication 🤨
 
-  authors$ = this.store.select(BookSelectors.selectAuthors);
-  authorsStatus$ = this.store.select(BookSelectors.selectAuthorsStatus);
-  authorsError$ = this.store.select(BookSelectors.selectAuthorsError);
+  authors$ = this.store.select(selectAuthors);
+  authorsStatus$ = this.store.select(selectAuthorsStatus);
+  authorsError$ = this.store.select(selectAuthorsError);
 
   // third duplication 😞
 
-  thumbnails$ = this.store.select(BookSelectors.selectThumbnails);
-  thumbnailsStatus$ = this.store.select(BookSelectors.selectThumbnailsStatus);
-  thumbnailsError$ = this.store.select(BookSelectors.selectThumbnailsError);
+  thumbnails$ = this.store.select(selectThumbnails);
+  thumbnailsStatus$ = this.store.select(selectThumbnailsStatus);
+  thumbnailsError$ = this.store.select(selectThumbnailsError);
 
   constructor(private store: Store) { }
 
   loadBooks() {
-    this.store.dispatch(BookActions.loadBooks());
+    this.store.dispatch(loadBooks());
   }
 
   loadAuthors() {
-    this.store.dispatch(BookActions.loadAuthors());
+    this.store.dispatch(loadAuthors());
   }
 
   loadThumbnails() {
-    this.store.dispatch(BookActions.loadThumbnails());
+    this.store.dispatch(loadThumbnails());
   }
 }

@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { catchError, concatMap, map } from 'rxjs/operators';
 
-import * as BookActions from './book.actions';
 import { DataService } from '../../../../shared/data.service';
+import {
+  loadAuthors,
+  loadAuthorsFailure,
+  loadAuthorsSuccess,
+  loadBooks,
+  loadBooksFailure,
+  loadBooksSuccess,
+  loadThumbnails,
+  loadThumbnailsFailure,
+  loadThumbnailsSuccess,
+} from './book.actions';
 
 
 @Injectable()
@@ -12,11 +22,11 @@ export class BookEffects {
 
   loadBooks$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookActions.loadBooks),
+      ofType(loadBooks),
       concatMap(() =>
         this.service.getBooks().pipe(
-          map(data => BookActions.loadBooksSuccess({ data })),
-          catchError(error => of(BookActions.loadBooksFailure({ error }))))
+          map(data => loadBooksSuccess({ data })),
+          catchError(error => of(loadBooksFailure({ error }))))
       )
     );
   });
@@ -25,11 +35,11 @@ export class BookEffects {
 
   loadAuthors$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookActions.loadAuthors),
+      ofType(loadAuthors),
       concatMap(() =>
         this.service.getAuthors().pipe(
-          map(data => BookActions.loadAuthorsSuccess({ data })),
-          catchError(error => of(BookActions.loadAuthorsFailure({ error }))))
+          map(data => loadAuthorsSuccess({ data })),
+          catchError(error => of(loadAuthorsFailure({ error }))))
       )
     );
   });
@@ -38,11 +48,11 @@ export class BookEffects {
 
   loadThumbnails$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookActions.loadThumbnails),
+      ofType(loadThumbnails),
       concatMap(() =>
         this.service.getThumbnails().pipe(
-          map(data => BookActions.loadThumbnailsSuccess({ data })),
-          catchError(error => of(BookActions.loadThumbnailsFailure({ error }))))
+          map(data => loadThumbnailsSuccess({ data })),
+          catchError(error => of(loadThumbnailsFailure({ error }))))
       )
     );
   });

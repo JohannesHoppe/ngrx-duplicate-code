@@ -2,7 +2,7 @@ import { combineReducers, createReducer, on } from '@ngrx/store';
 import { SubmittableItem } from 'projects/shared/api-adapter';
 import { Book } from 'projects/shared/book';
 
-import * as BookActions from './book.actions';
+import { decrementCounter, incrementCounter } from './book.actions';
 import { authorsApiAdapter, booksApiAdapter, thumbnailsApiAdapter } from './book.adapter';
 
 
@@ -29,8 +29,8 @@ const counterReducer = createReducer(
 
   // this is not how it is normally done,
   // one would probably expect `state.counter`, see next demo!
-  on(BookActions.incrementCounter, state => state + 1),
-  on(BookActions.decrementCounter, state => state - 1),
+  on(incrementCounter, state => state + 1),
+  on(decrementCounter, state => state - 1),
 );
 
 export const reducer = combineReducers({
