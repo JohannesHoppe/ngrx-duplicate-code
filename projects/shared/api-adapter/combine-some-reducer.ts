@@ -11,11 +11,7 @@ export function combineSomeReducer<T, V extends Action = Action>(
 
       const newState = combinedReducer(state, action);
 
-      // nothing has changed
-      if (newState === state) {
-        return state;
-      }
-
+      // TODO: return old object if nothing has changed
       return {
         ...state,
         ...newState
